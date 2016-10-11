@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="true"/>
+	<constant name="struts.devMode" value="true"/>
+	<constant name="struts.i18n.encoding" value="UTF-8"/>
+	
+	<!--指定国际化资源文件的baseName为messageResource-->
+	<constant name="struts.custom.i18n.resources" value="messageResource"/>
+	
+	<!--上传的全部照片的最大限制-->
+	<constant name="struts.multipart.maxSize" value="1024120400"/>
+	
+	<!--临时存放文件的路径-->
+	<constant name="struts.multipart.saveDir" value="D:/test"/>
+	
+	<package name="form" namespace="/form" extends="struts-default">
+		<action name="loginaction" class="loginAction">
+			<result name="user">
+
+			</result>
+			<result name="restart">
+				/index.jsp
+			</result>
+
+			<result name="admin">
+
+			</result>
+		</action>
+	</package>
+</struts>
