@@ -9,5 +9,5 @@ public class Constants {
     public static final int ORDER_STATUS_RECEIVE=3;
     public static final int ORDER_STATUS_END=4;
 
-    public static final String SESSION_CART=
+    public static final String SESSION_CART="";
 }

@@ -20,14 +20,13 @@
 	<package name="form" namespace="/form" extends="struts-default">
 		<action name="loginaction" class="action.loginAction">
 			<result name="user">
-
+				/jsp/user/1.jsp
 			</result>
 			<result name="restart">
 				/index.jsp
 			</result>
-
 			<result name="admin">
-
+				/jsp/admin/2.jsp
 			</result>
 		</action>
 	</package>

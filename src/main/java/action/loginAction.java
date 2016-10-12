@@ -1,6 +1,7 @@
 package action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import model.Administrator;
 import model.User;
 import org.apache.struts2.ServletActionContext;
 import service.UserService;
@@ -56,8 +57,13 @@ public class loginAction extends ActionSupport{
 
             ret="restart";
         }else {
-            this.session.setAttribute(Constants);
+            //this.session.setAttribute();
+            if(user instanceof Administrator){
+                ret="admin";
+            }else {
+                ret="user";
+            }
         }
-
+        return ret;
     }
 }
