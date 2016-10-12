@@ -18,7 +18,7 @@
 	<constant name="struts.multipart.saveDir" value="D:/test"/>
 	
 	<package name="form" namespace="/form" extends="struts-default">
-		<action name="loginaction" class="loginAction">
+		<action name="loginaction" class="action.loginAction">
 			<result name="user">
 
 			</result>
