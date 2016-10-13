@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="wuziqi_web:javaEEApplication exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/wuziqi_web_javaEEApplication_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="wuziqi_web/javaeeApplication/javaEEApplication" />
+    </root>
+  </artifact>
+</component>

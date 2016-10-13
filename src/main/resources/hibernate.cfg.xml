@@ -4,8 +4,6 @@
     "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
   <session-factory>
-    <property name="connection.url">jdbc:mysql://localhost:3306/wuziqi</property>
-    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
     <!-- DB schema will be updated if needed -->
     <property name="hbm2ddl.auto">update</property>
     <!-- JDBC connection pool (use the built-in) -->
@@ -18,8 +16,7 @@
     <property name="show_sql">true</property>
     <property name="format_sql">true</property>
 
-
-    <mapping class="model.UserPo"/>
-    <mapping resource="model/UserPo.hbm.xml"/>
+    <mapping class="base.model.UserPo"/>
+    <mapping resource="UserPo.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

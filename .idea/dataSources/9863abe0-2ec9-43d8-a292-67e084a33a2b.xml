@@ -1,0 +1,40 @@
+<dataSource name="hibernate.cfg.xml/Hibernate">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
+    <schema id="1" name="wuziqi">
+      <visible>1</visible>
+    </schema>
+    <schema id="2" name="information_schema" />
+    <schema id="3" name="mysql" />
+    <schema id="4" name="performance_schema" />
+    <schema id="5" name="shop" />
+    <schema id="6" name="storyfm" />
+    <schema id="7" name="test" />
+    <table id="8" parent="1" name="user" />
+    <column id="9" parent="8" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(255)|0</data-type>
+    </column>
+    <column id="10" parent="8" name="admin">
+      <mandatory>1</mandatory>
+      <data-type>bit(1)|0</data-type>
+    </column>
+    <column id="11" parent="8" name="username">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="12" parent="8" name="password">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="13" parent="8" name="email">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="14" parent="8" name="workNo">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <key id="15" parent="8" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+  </database-model>
+</dataSource>
