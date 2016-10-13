@@ -44,7 +44,7 @@ public class UserPo {
     }
 
     @Basic
-    @Column(name = "email", nullable = true, length = 120)
+    @Column(name = "email", nullable = false, length = 50)
     public String getEmail() {
         return email;
     }
