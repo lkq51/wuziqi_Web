@@ -7,7 +7,7 @@
 	<constant name="struts.enable.DynamicMethodInvocation" value="true"/>
 	<constant name="struts.devMode" value="true"/>
 	<constant name="struts.i18n.encoding" value="UTF-8"/>
-	
+	<constant name="struts.objectFactory" value="spring" />
 	<!--指定国际化资源文件的baseName为messageResource-->
 	<constant name="struts.custom.i18n.resources" value="messageResource"/>
 	
@@ -18,7 +18,7 @@
 	<constant name="struts.multipart.saveDir" value="D:/test"/>
 	
 	<package name="form" namespace="/form" extends="struts-default">
-		<action name="loginaction" class="action.loginAction">
+		<action name="loginaction" class="loginAction">
 			<result name="user">
 				/jsp/user/1.jsp
 			</result>
