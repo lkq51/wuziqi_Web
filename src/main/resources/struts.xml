@@ -17,8 +17,8 @@
 	<!--临时存放文件的路径-->
 	<constant name="struts.multipart.saveDir" value="D:/test"/>
 	
-	<package name="form" namespace="/form" extends="struts-default">
-		<action name="loginaction" class="loginAction">
+	<package name="form" namespace="/" extends="struts-default">
+		<action name="loginaction" class="base.action.loginAction">
 			<result name="user">
 				/jsp/user/1.jsp
 			</result>

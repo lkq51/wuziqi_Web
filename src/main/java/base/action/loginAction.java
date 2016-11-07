@@ -1,11 +1,12 @@
 package base.action;
 
+import base.model.User;
 import com.opensymphony.xwork2.ActionSupport;
 import base.model.Administrator;
-import base.model.User;
 import org.apache.struts2.ServletActionContext;
 import base.service.UserService;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -16,16 +17,17 @@ import javax.servlet.http.HttpSession;
 public class loginAction extends ActionSupport{
     private String userName;
     private String password;
+    @Resource
     private UserService userService;
     private HttpServletRequest request;
     private HttpSession session;
     private ServletContext application;
 
-    public String getUsername() {
+    public String getUserName() {
         return userName;
     }
 
-    public void setUsername(String username) {
+    public void setUserName(String username) {
         this.userName = username;
     }
 

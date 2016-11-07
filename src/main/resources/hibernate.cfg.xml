@@ -4,19 +4,9 @@
     "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
   <session-factory>
-    <!-- DB schema will be updated if needed -->
-    <property name="hbm2ddl.auto">update</property>
-    <!-- JDBC connection pool (use the built-in) -->
-    <property name="connection.pool_size">1</property>
-    <!-- SQL dialect -->
-    <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
-    <!-- Enable Hibernate's automatic session context management -->
-    <property name="current_session_context_class">thread</property>
-    <!-- Echo all executed SQL to stdout -->
-    <property name="show_sql">true</property>
-    <property name="format_sql">true</property>
-
-    <mapping class="base.model.UserPo"/>
+    <property name="connection.url">jdbc:mysql://localhost:3306/wuziqi</property>
+    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
     <mapping resource="UserPo.hbm.xml"/>
+    <mapping class="base.model.User"/>
   </session-factory>
 </hibernate-configuration>

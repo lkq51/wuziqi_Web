@@ -17,8 +17,8 @@ public class UserServiceImpl implements UserService {
         this.userDAO = userDAO;
     }
 
-    public User login(String name, String password) {
-        return userDAO.loginCheck(name,password);
+    public User login(String userName, String password) {
+        return userDAO.loginCheck(userName,password);
     }
 
     public void add(User user) {
