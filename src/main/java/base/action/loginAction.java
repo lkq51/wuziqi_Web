@@ -52,18 +52,23 @@ public class loginAction extends ActionSupport{
         this.session=this.request.getSession();
 
         String ret="";
-        User user=this.userService.login(userName,password);
-
-        if (user==null){
-            this.request.setAttribute("msg","用户不存在");
-            ret="restart";
-        }else {
-            //this.session.setAttribute();
-            if(user instanceof Administrator){
-                ret="admin";
-            }else {
-                ret="user";
+        User user=new User();
+        if (userName!=""&&password!="") {
+            user = this.userService.login(userName, password);
+            if (user == null) {
+                this.request.setAttribute("msg", "用户不存在");
+                ret = "restart";
+            } else {
+                //this.session.setAttribute();
+                if (user.isAdmin()) {
+                    ret = "admin";
+                } else {
+                    ret = "user";
+                }
             }
+        }else {
+            this.request.setAttribute("msg","用户名与密码为空!!");
+            ret="restart";
         }
         return ret;
     }

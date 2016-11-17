@@ -4,11 +4,11 @@ package base.model;
  * Created by lkq on 2016/10/12.
  */
 public class Administrator extends User{
-    private String workNo;
-    public String getWorkNo(){
-        return workNo;
+    private String admin;
+    public String getAdmin(){
+        return admin;
     }
-    public void setWorkNo(String workNo){
-        this.workNo=workNo;
+    public void setAdmin(String admin){
+        this.admin=admin;
     }
 }
