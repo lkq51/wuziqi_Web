@@ -13,7 +13,7 @@ public class UserDAOimpl extends BaseDAOImpl implements UserDAO {
         List<User> list= (List<User>) this.getHibernateTemplate().find(hql);
        //String hql=String.format("from User u");
        //List<User> list=(List<User>) this.getHibernateTemplate().find(hql);
-       System.out.println(list.get(0).getUsername());
+       //System.out.println(list.get(0).getUsername());
         if (list!=null&&list.size()>0){
             super.logger.info("login check succ,user.username="+list.get(0).getUsername());
             return list.get(0);
