@@ -2,6 +2,7 @@ package base.action;
 
 import base.model.User;
 import com.opensymphony.xwork2.ActionSupport;
+import base.model.Administrator;
 import org.apache.struts2.ServletActionContext;
 import base.service.UserService;
 
@@ -51,18 +52,23 @@ public class loginAction extends ActionSupport{
         this.session=this.request.getSession();
 
         String ret="";
-        User user=this.userService.login(userName,password);
-
-        if (user==null){
-            this.request.setAttribute("msg","用户不存在");
-            ret="restart";
-        }else {
-            //this.session.setAttribute();
-            if(user.isAdmin()){
-                ret="admin";
-            }else {
-                ret="user";
+        User user=new User();
+        if (userName!=""&&password!="") {
+            user = this.userService.login(userName, password);
+            if (user == null) {
+                this.request.setAttribute("msg", "用户不存在");
+                ret = "restart";
+            } else {
+                //this.session.setAttribute();
+                if (user.isAdmin()) {
+                    ret = "admin";
+                } else {
+                    ret = "user";
+                }
             }
+        }else {
+            this.request.setAttribute("msg","用户名与密码为空!!");
+            ret="restart";
         }
         return ret;
     }
