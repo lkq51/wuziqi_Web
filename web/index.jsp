@@ -13,12 +13,9 @@
   <body>
     <div>
       <form id="loginForm" action="loginaction"  method="post">
-        用户名: <input id="userName" name="userName" type="text"><br>
-        密码:   <input id="password" name="password" type="password"><br>
-        <input type="submit" value="登录"><br/>
-        <%
-          out.println(request.getAttribute("msg"));
-        %>
+        用户名：<input id="userName" name="userName" type="text"><br>
+        密码：  <input id="password" name="password" type="password"><br>
+        <input type="submit" value="登录">
       </form>
     </div>
   </body>
