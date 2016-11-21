@@ -19,6 +19,7 @@
           <element id="library" level="project" name="struts2-spring-plugin-2.3.16.3" />
           <element id="library" level="project" name="aspectjweaver" />
           <element id="library" level="project" name="Maven: aspectj:aspectjweaver:1.5.3" />
+          <element id="library" level="project" name="tomcatlib" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="wuziqi_web/javaeeApplication/javaEEApplication" />
