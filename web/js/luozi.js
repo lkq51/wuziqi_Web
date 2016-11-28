@@ -18,11 +18,12 @@ function getqiziPosition(clickPosition) {
     var y1=y*40;
     var y2=(y+1)*40;
 
-    var distances={distance1:0,distance2:0,distance3:0,distance4:0};
-    var distance.distance1=Math.sqrt(Math.pow((clickPosition.x-x1),2)+Math.pow((clickPosition.y-y1),2));
+    var distance1=Math.sqrt(Math.pow((clickPosition.x-x1),2)+Math.pow((clickPosition.y-y1),2));
     var distance2=Math.sqrt(Math.pow((x2-clickPosition.x),2)+Math.pow((clickPosition.y-y1),2));
     var distance3=Math.sqrt(Math.pow((clickPosition.x-x1),2)+Math.pow((y2-clickPosition.y),2));
     var distance4=Math.sqrt(Math.pow((x2-clickPosition.x),2)+Math.pow((y2-clickPosition.y),2));
+
+    Math.min(distance1,distance2,distance3,distance4);
 
 }
 
