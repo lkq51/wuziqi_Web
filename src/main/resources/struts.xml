@@ -29,5 +29,6 @@
 				/jsp/admin/2.jsp
 			</result>
 		</action>
+		<action name="upload" class="base.Servlet.UploadServlet" method="doPost"></action>
 	</package>
 </struts>
