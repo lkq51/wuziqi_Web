@@ -1,38 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="hibernate.cfg.xml/Hibernate">
-  <database-model serializer="dbm" rdbms="MYSQL" format-version="2.6">
-    <schema id="1" name="wuziqi">
-      <visible>1</visible>
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.0">
+    <root id="1"/>
+    <schema id="2" parent="1" name="wuziqi">
+      <Current>1</Current>
+      <Visible>1</Visible>
     </schema>
-    <schema id="2" name="information_schema"/>
-    <schema id="3" name="mysql"/>
-    <schema id="4" name="performance_schema"/>
-    <schema id="5" name="storyfm"/>
-    <schema id="6" name="test"/>
-    <schema id="7" name="sys"/>
-    <table id="8" parent="1" name="user"/>
-    <column id="9" parent="8" name="id">
-      <mandatory>1</mandatory>
-      <data-type>int(255)|0</data-type>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <schema id="6" parent="1" name="storyfm"/>
+    <schema id="7" parent="1" name="test"/>
+    <schema id="8" parent="1" name="sys"/>
+    <table id="9" parent="2" name="user"/>
+    <column id="10" parent="9" name="id">
+      <Position>1</Position>
+      <DataType>int(255)|0</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <column id="10" parent="8" name="admin">
-      <mandatory>1</mandatory>
-      <data-type>bit(1)|0</data-type>
+    <column id="11" parent="9" name="admin">
+      <Position>2</Position>
+      <DataType>bit(1)|0</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <column id="11" parent="8" name="username">
-      <mandatory>1</mandatory>
-      <data-type>varchar(255)|0</data-type>
+    <column id="12" parent="9" name="username">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <column id="12" parent="8" name="password">
-      <mandatory>1</mandatory>
-      <data-type>varchar(255)|0</data-type>
+    <column id="13" parent="9" name="password">
+      <Position>4</Position>
+      <DataType>varchar(255)|0</DataType>
+      <NotNull>1</NotNull>
     </column>
-    <column id="13" parent="8" name="email">
-      <data-type>varchar(255)|0</data-type>
+    <column id="14" parent="9" name="email">
+      <Position>5</Position>
+      <DataType>varchar(255)|0</DataType>
     </column>
-    <key id="14" parent="8" name="PRIMARY">
-      <columns>id</columns>
-      <primary>1</primary>
+    <key id="15" parent="9" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
     </key>
   </database-model>
 </dataSource>
