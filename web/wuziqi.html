@@ -7,10 +7,16 @@
     <script type="text/javascript" src="js/luozi.js"></script>
 </head>
 <body>
-    <div onclick="draw(event)" id="testCanvas">
+    <div onclick="isWho(event)" id="testCanvas">
         <canvas id="qipan" width="600" height="600">
             your browser does not support the HTML5 canvas tag.
         </canvas>
+    </div>
+    <div id="blackTip">
+        <h>请黑方落子</h>
+    </div>
+    <div id="whiteTip" style="visibility: hidden">
+        <h1>请白方落子</h1>
     </div>
 
 </body>
