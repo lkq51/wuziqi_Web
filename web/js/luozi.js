@@ -9,9 +9,11 @@
        moveFirst = BLACK, //哪种颜色先下
        color = WHITE,     //棋子当前显示的颜色
        qizis = new Array(),//存储整个棋盘棋子分布的数组
-       grid = 15,
-       whoPlay = BLACK,
-       interval=600 / grid;
+       grid = 14,           //棋盘大小为grid * grid
+       whoPlay = BLACK,     //轮到哪一方下棋了
+       chessSize = 20,   //棋子的半径
+       chessboardSize = 700, //棋盘的边长
+       interval=chessboardSize / grid; //每个格子的边长
    for(var i = 0;i<grid;i++){
        qizis[i] = new Array();
    }
@@ -43,6 +45,7 @@ function getqiziPosition() {
     }
     points[lowest].x = parseInt(points[lowest].x / interval);
     points[lowest].y = parseInt(points[lowest].y / interval);
+    alert("x:"+clickPosition.x+" y:"+clickPosition.y);
     return points[lowest];
 }
 //在页面上显示出落子
@@ -52,7 +55,7 @@ function draw() {
         qiziPosition = getqiziPosition();
     context.fillStyle = color;
     context.beginPath();
-    context.arc(qiziPosition.x * interval, qiziPosition.y * interval, grid, 0, Math.PI * 2, true);
+    context.arc(qiziPosition.x * interval, qiziPosition.y * interval, chessSize, 0, Math.PI * 2, true);
     context.closePath();
     context.fill();
 }
@@ -202,11 +205,11 @@ function warning() {
     document.getElementById("winner").innerHTML="此处已有落子！！";
 }
 function tip(color) {
-       if (color==BLACK){
-           document.getElementById("tip").innerHTML="<h1>请黑方落子</h1>";
-       }
-       if (color==WHITE){
+       if (color == BLACK&&!winner){
            document.getElementById("tip").innerHTML="<h1>请白方落子</h1>";
+       }
+       if (color == WHITE&&!winner){
+           document.getElementById("tip").innerHTML="<h1>请黑方落子</h1>";
        }
 
 }
@@ -240,11 +243,10 @@ function blackMove() {
 }
 //哪方落子
 function whoMoves() {
+    tip(whoPlay);
     if(whoPlay==BLACK){
-        tip(color);
         blackMove();
     }else {
-        tip(color);
        whiteMove();
     }
 }
