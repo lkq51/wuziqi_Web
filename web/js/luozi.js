@@ -1,26 +1,29 @@
 /**
  * Created by lkq on 2016/11/28.
  */
-   var turn = 0,            //当前进行的回合数*2
-       moveFirst = "black", //哪种颜色先下
-       color = "white",     //棋子当前显示的颜色
+   var event,
+       BLACK = "black",
+       WHITE = "white",
+       winner = "",         //胜利者
+       turn = 0,            //当前进行的回合数*2
+       moveFirst = BLACK, //哪种颜色先下
+       color = WHITE,     //棋子当前显示的颜色
        qizis = new Array(),//存储整个棋盘棋子分布的数组
-       win,//是否有人获胜，true表示有人，false表示没有
        grid = 15,
-       whoPlay = "black",
+       whoPlay = BLACK,
        interval=600 / grid;
    for(var i = 0;i<grid;i++){
        qizis[i] = new Array();
    }
-function getCanvasPos(canvas, e) {
+function getCanvasPos(canvas) {
     var rect = canvas.getBoundingClientRect();
     return{
-        x: e.clientX - rect.left * (canvas.width / rect.width),
-        y: e.clientY - rect.top * (canvas.height / rect.height)
+        x: event.clientX - rect.left * (canvas.width / rect.width),
+        y: event.clientY - rect.top * (canvas.height / rect.height)
     };
 }
-function getqiziPosition(e) {
-    var clickPosition = getCanvasPos(qipan, e),
+function getqiziPosition() {
+    var clickPosition = getCanvasPos(qipan),
         x = parseInt(clickPosition.x / interval),
         y = parseInt(clickPosition.y / interval),
         points = [];
@@ -38,15 +41,15 @@ function getqiziPosition(e) {
         if (distances[i]<distances[lowest])
             lowest = i;
     }
-    points[lowest].x=parseInt(points[lowest].x/interval);
-    points[lowest].y=parseInt(points[lowest].y/interval)
+    points[lowest].x = parseInt(points[lowest].x / interval);
+    points[lowest].y = parseInt(points[lowest].y / interval);
     return points[lowest];
 }
 //在页面上显示出落子
-function draw(e) {
+function draw() {
     var qipan = document.getElementById("qipan"),
         context = qipan.getContext("2d"),
-        qiziPosition = getqiziPosition(e);
+        qiziPosition = getqiziPosition();
     context.fillStyle = color;
     context.beginPath();
     context.arc(qiziPosition.x * interval, qiziPosition.y * interval, grid, 0, Math.PI * 2, true);
@@ -183,46 +186,78 @@ function top_bottom(qiziPosition) {
 function ifWin(qiziPosition) {
     return left_right(qiziPosition) | leftBottom_rightTop(qiziPosition) | leftTop_rightBottom(qiziPosition) | top_bottom(qiziPosition);
 }
-//白子落子
-function whiteMove(e) {
-    document.getElementById("blackTip").style.visibility="visible";
-    document.getElementById("whiteTip").style.visibility="hidden";
-    color = "white";
-    qizis[getqiziPosition(e).x][getqiziPosition(e).y] = color;
+function checkNull(qiziPosition) {
+    if(qizis[qiziPosition.x][qiziPosition.y]!=BLACK&&qizis[qiziPosition.x][qiziPosition.y]!=WHITE){
+        return true;
+    } else{
+        return false;
+    }
+}
+function move(qiziPosition) {
+    qizis[qiziPosition.x][qiziPosition.y] = color;
     draw(e);
     turn++;
-    whoPlay = "black";
-    return ifWin(getqiziPosition(e));
+}
+function warning() {
+    document.getElementById("winner").innerHTML="此处已有落子！！";
+}
+function tip(color) {
+       if (color==BLACK){
+           document.getElementById("tip").innerHTML="<h1>请黑方落子</h1>";
+       }
+       if (color==WHITE){
+           document.getElementById("tip").innerHTML="<h1>请白方落子</h1>";
+       }
 
 }
+//白子落子
+function whiteMove() {
+    color = WHITE;
+    var qiziPosition = getqiziPosition();
+    if (checkNull(qiziPosition)){
+        move(qiziPosition);
+        if(ifWin(qiziPosition)){
+            winner = WHITE;
+        }
+        whoPlay = BLACK;
+    }else {
+        warning();
+    }
+}
 //黑子落子
-function blackMove(e) {
-    document.getElementById("blackTip").style.visibility = "hidden";
-    document.getElementById("whiteTip").style.visibility = "visible";
-    color = "black";
-    qizis[getqiziPosition(e).x][getqiziPosition(e).y] = color;
-    draw(e);
-    turn++;
-    whoPlay = "white";
-    return ifWin(getqiziPosition(e));
+function blackMove() {
+    color = BLACK;
+    var qiziPosition=getqiziPosition();
+    if(checkNull(qiziPosition)){
+        move(qiziPosition);
+        if(ifWin(qiziPosition)){
+            winner = BLACK;
+        }
+        whoPlay = WHITE;
+    }else {
+        warning();
+    }
 }
 //哪方落子
-function isWho(e) {
-    if(whoPlay=="black"){
-       win = blackMove(e);
+function whoMoves() {
+    if(whoPlay==BLACK){
+        tip(color);
+        blackMove();
     }else {
-       win = whiteMove(e);
+        tip(color);
+       whiteMove();
     }
-    if(win){
-        if(whoPlay == "black"){
-            return "white";
-        }else{
-            return "black";
-        }
-    }
+}
+function gameOver() {
+    document.getElementById("qipan").removeAttribute("onclick");
+    var congratulationWinner = "恭喜执"+winner+"子选手获得胜利";
+    document.getElementById("winner").innerHTML = congratulationWinner;
 }
 //游戏进行
 function gameOn(e) {
-    //var congratulationWinner = "恭喜执"+isWho(e)+"子选手获得胜利";
-    //document.getElementById("winner").innerText = congratulationWinner;
+        event = e;
+       whoMoves();
+       if(winner){
+           gameOver();
+       }
 }
