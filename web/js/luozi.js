@@ -14,7 +14,7 @@
        chessSize = 20,   //棋子的半径
        chessboardSize = 700, //棋盘的边长
        interval=chessboardSize / grid; //每个格子的边长
-   for(var i = 0;i<grid;i++){
+   for(var i = 0;i<grid+1;i++){
        qizis[i] = new Array();
    }
 function getCanvasPos(canvas) {
@@ -45,7 +45,6 @@ function getqiziPosition() {
     }
     points[lowest].x = parseInt(points[lowest].x / interval);
     points[lowest].y = parseInt(points[lowest].y / interval);
-    alert("x:"+clickPosition.x+" y:"+clickPosition.y);
     return points[lowest];
 }
 //在页面上显示出落子

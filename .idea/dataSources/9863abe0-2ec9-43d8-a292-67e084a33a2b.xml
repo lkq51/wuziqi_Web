@@ -21,6 +21,7 @@
       <Position>1</Position>
       <DataType>int(255)|0</DataType>
       <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
     </column>
     <column id="13" parent="10" name="admin">
       <Position>2</Position>
@@ -41,7 +42,11 @@
       <Position>5</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="17" parent="11" name="users">
+    <key id="17" parent="10" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="18" parent="11" name="users">
       <Position>1</Position>
       <DataType>varchar(512)|0</DataType>
     </column>
