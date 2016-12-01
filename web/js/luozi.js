@@ -9,12 +9,14 @@
        moveFirst = BLACK, //哪种颜色先下
        color = WHITE,     //棋子当前显示的颜色
        qizis = new Array(),//存储整个棋盘棋子分布的数组
-       grid = 14,           //棋盘大小为grid * grid
+       canvasSize = 800,    //画布大小
+       grid = 15,           //棋盘大小为grid * grid
        whoPlay = BLACK,     //轮到哪一方下棋了
        chessSize = 20,   //棋子的半径
        chessboardSize = 700, //棋盘的边长
-       interval=chessboardSize / grid; //每个格子的边长
-   for(var i = 0;i<grid+1;i++){
+       extra = (canvasSize - chessboardSize) / 2,  //棋盘与画布的空余
+       interval=chessboardSize / (grid-1); //每个格子的边长
+   for(var i = 0;i<grid;i++){
        qizis[i] = new Array();
    }
 function getCanvasPos(canvas) {
@@ -25,8 +27,10 @@ function getCanvasPos(canvas) {
     };
 }
 function getqiziPosition() {
-    var clickPosition = getCanvasPos(qipan),
-        x = parseInt(clickPosition.x / interval),
+    var clickPosition = getCanvasPos(qipan);
+        clickPosition.x = clickPosition.x - extra;
+        clickPosition.y = clickPosition.y - extra;
+    var x = parseInt(clickPosition.x / interval),
         y = parseInt(clickPosition.y / interval),
         points = [];
         points[0] = {x: x * interval, y: y * interval};
@@ -43,18 +47,17 @@ function getqiziPosition() {
         if (distances[i]<distances[lowest])
             lowest = i;
     }
-    points[lowest].x = parseInt(points[lowest].x / interval);
-    points[lowest].y = parseInt(points[lowest].y / interval);
+    points[lowest].x = parseInt(points[lowest].x / interval );
+    points[lowest].y = parseInt(points[lowest].y / interval );
     return points[lowest];
 }
 //在页面上显示出落子
-function draw() {
+function draw(qiziPosition) {
     var qipan = document.getElementById("qipan"),
-        context = qipan.getContext("2d"),
-        qiziPosition = getqiziPosition();
+        context = qipan.getContext("2d");
     context.fillStyle = color;
     context.beginPath();
-    context.arc(qiziPosition.x * interval, qiziPosition.y * interval, chessSize, 0, Math.PI * 2, true);
+    context.arc(qiziPosition.x * interval +extra, qiziPosition.y * interval + extra, chessSize, 0, Math.PI * 2, true);
     context.closePath();
     context.fill();
 }
@@ -188,6 +191,13 @@ function top_bottom(qiziPosition) {
 function ifWin(qiziPosition) {
     return left_right(qiziPosition) | leftBottom_rightTop(qiziPosition) | leftTop_rightBottom(qiziPosition) | top_bottom(qiziPosition);
 }
+function checkIfinBoard(qiziPosition) {
+    if (qiziPosition.x<15&&qiziPosition.x>-1&&qiziPosition.y<15&&qiziPosition.y>-1){
+        return true;
+    }else {
+        return false;
+    }
+}
 function checkNull(qiziPosition) {
     if(qizis[qiziPosition.x][qiziPosition.y]!=BLACK&&qizis[qiziPosition.x][qiziPosition.y]!=WHITE){
         return true;
@@ -197,11 +207,11 @@ function checkNull(qiziPosition) {
 }
 function move(qiziPosition) {
     qizis[qiziPosition.x][qiziPosition.y] = color;
-    draw(e);
+    draw(qiziPosition);
     turn++;
 }
 function warning() {
-    document.getElementById("winner").innerHTML="此处已有落子！！";
+    document.getElementById("winner").innerHTML="此处不能落子！！";
 }
 function tip(color) {
        if (color == BLACK&&!winner){
@@ -216,7 +226,7 @@ function tip(color) {
 function whiteMove() {
     color = WHITE;
     var qiziPosition = getqiziPosition();
-    if (checkNull(qiziPosition)){
+    if (checkIfinBoard(qiziPosition)&&checkNull(qiziPosition)){
         move(qiziPosition);
         if(ifWin(qiziPosition)){
             winner = WHITE;
@@ -230,7 +240,7 @@ function whiteMove() {
 function blackMove() {
     color = BLACK;
     var qiziPosition=getqiziPosition();
-    if(checkNull(qiziPosition)){
+    if(checkIfinBoard(qiziPosition)&&checkNull(qiziPosition)){
         move(qiziPosition);
         if(ifWin(qiziPosition)){
             winner = BLACK;
