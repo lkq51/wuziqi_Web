@@ -5,13 +5,14 @@
        BLACK = "black",
        WHITE = "white",
        winner = "",         //胜利者
-       turn = 0,            //当前进行的回合数*2
+       whoPlay = BLACK,     //轮到哪一方下棋了
+       turn = 0,            //当前进行的回合数=turn/2
        moveFirst = BLACK, //哪种颜色先下
        color = WHITE,     //棋子当前显示的颜色
+       lastPosition,
        qizis = new Array(),//存储整个棋盘棋子分布的数组
        canvasSize = 750,    //画布大小
        grid = 15,           //棋盘大小为grid * grid
-       whoPlay = BLACK;     //轮到哪一方下棋了
        chessSize = 20,   //棋子的半径
        chessboardSize = 700, //棋盘的边长
        extra = (canvasSize - chessboardSize) / 2,  //棋盘与画布的空余
@@ -50,6 +51,7 @@ function getqiziPosition() {
         if (distances[i]<distances[lowest])
             lowest = i;
     }
+    alert(points[lowest].x+"    "+points[lowest].y);
     points[lowest].x = parseInt(points[lowest].x / interval );
     points[lowest].y = parseInt(points[lowest].y / interval );
     return points[lowest];
@@ -208,24 +210,20 @@ function checkNull(qiziPosition) {
         return false;
     }
 }
-function move() {
+function move(qiziPosition) {
     color = whoPlay;
-    var qiziPosition = getqiziPosition();
-    if (checkIfinBoard(qiziPosition)&&checkNull(qiziPosition)) {
-        qizis[qiziPosition.x][qiziPosition.y] = color;
-        draw(qiziPosition);
-        turn++;
-        if(ifWin(qiziPosition)){
-            winner = whoPlay;
-        }
-        if(whoPlay==BLACK){
-            whoPlay = WHITE;
-        }else {
-            whoPlay =BLACK;
-        }
-    }else {
-        warning();
+    qizis[qiziPosition.x][qiziPosition.y] = color;
+    draw(qiziPosition);
+    turn++;
+    if(ifWin(qiziPosition)){
+        winner = whoPlay;
     }
+    if(whoPlay==BLACK){
+        whoPlay = WHITE;
+    }else {
+        whoPlay = BLACK;
+    }
+    lastPosition = qiziPosition;
 }
 function warning() {
     document.getElementById("winner").innerHTML="此处不能落子！！";
@@ -249,8 +247,13 @@ function gameOver() {
 //游戏进行
 function gameOn(e) {
         event = e;
-        move();
-        tip();
+        var qiziPosition = getqiziPosition();
+        if(checkIfinBoard(qiziPosition)&&checkNull(qiziPosition)) {
+            move(qiziPosition);
+            tip();
+        }else {
+            warning();
+        }
        if(winner){
            gameOver();
        }
@@ -258,5 +261,6 @@ function gameOn(e) {
 
 
 function takeBack() {
-
+       context.clearRect(lastPosition.x * interval +extra,lastPosition.y * interval + extra, chessSize,chessSize);
+       qizis[lastPosition.x][lastPosition.y] = "";
 }
