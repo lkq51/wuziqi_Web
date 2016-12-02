@@ -11,6 +11,6 @@
     <title>欢迎使用</title>
 </head>
 <body>
-<a href="../wuziqi.html"></a>
+<jsp:forward page="/wuziqi.html"></jsp:forward>
 </body>
 </html>

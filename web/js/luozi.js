@@ -28,7 +28,7 @@ function getCanvasPos(canvas) {
 }
 function getqiziPosition() {
     var clickPosition = getCanvasPos(qipan);
-    if(clickPosition.x>750&&clickPosition.x<50&&clickPosition.y<50&&clickPosition.y>750){
+    if(clickPosition.x>(extra+chessboardSize)&&clickPosition.x<extra&&clickPosition.y<extra&&clickPosition.y>(extra+chessboardSize)){
         return null;
     }
     clickPosition.x = clickPosition.x - extra;
@@ -251,4 +251,9 @@ function gameOn(e) {
        if(winner){
            gameOver();
        }
+}
+
+
+function takeBack() {
+
 }
