@@ -229,6 +229,9 @@ function move() {
 }
 function warning() {
     document.getElementById("winner").innerHTML="此处不能落子！！";
+    setTimeout(function(){
+        document.getElementById("winner").innerHTML="";
+    },3000);
 }
 function tip() {
        if (whoPlay == BLACK&&!winner){
