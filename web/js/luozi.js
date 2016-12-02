@@ -9,9 +9,9 @@
        moveFirst = BLACK, //哪种颜色先下
        color = WHITE,     //棋子当前显示的颜色
        qizis = new Array(),//存储整个棋盘棋子分布的数组
-       canvasSize = 800,    //画布大小
+       canvasSize = 750,    //画布大小
        grid = 15,           //棋盘大小为grid * grid
-       whoPlay = BLACK,     //轮到哪一方下棋了
+       whoPlay = BLACK;     //轮到哪一方下棋了
        chessSize = 20,   //棋子的半径
        chessboardSize = 700, //棋盘的边长
        extra = (canvasSize - chessboardSize) / 2,  //棋盘与画布的空余
@@ -28,8 +28,11 @@ function getCanvasPos(canvas) {
 }
 function getqiziPosition() {
     var clickPosition = getCanvasPos(qipan);
-        clickPosition.x = clickPosition.x - extra;
-        clickPosition.y = clickPosition.y - extra;
+    if(clickPosition.x>750&&clickPosition.x<50&&clickPosition.y<50&&clickPosition.y>750){
+        return null;
+    }
+    clickPosition.x = clickPosition.x - extra;
+    clickPosition.y = clickPosition.y - extra;
     var x = parseInt(clickPosition.x / interval),
         y = parseInt(clickPosition.y / interval),
         points = [];
@@ -192,7 +195,7 @@ function ifWin(qiziPosition) {
     return left_right(qiziPosition) | leftBottom_rightTop(qiziPosition) | leftTop_rightBottom(qiziPosition) | top_bottom(qiziPosition);
 }
 function checkIfinBoard(qiziPosition) {
-    if (qiziPosition.x<15&&qiziPosition.x>-1&&qiziPosition.y<15&&qiziPosition.y>-1){
+    if (qiziPosition!=null&&qiziPosition.x<15&&qiziPosition.x>-1&&qiziPosition.y<15&&qiziPosition.y>-1){
         return true;
     }else {
         return false;
@@ -205,59 +208,35 @@ function checkNull(qiziPosition) {
         return false;
     }
 }
-function move(qiziPosition) {
-    qizis[qiziPosition.x][qiziPosition.y] = color;
-    draw(qiziPosition);
-    turn++;
+function move() {
+    color = whoPlay;
+    var qiziPosition = getqiziPosition();
+    if (checkIfinBoard(qiziPosition)&&checkNull(qiziPosition)) {
+        qizis[qiziPosition.x][qiziPosition.y] = color;
+        draw(qiziPosition);
+        turn++;
+        if(ifWin(qiziPosition)){
+            winner = whoPlay;
+        }
+        if(whoPlay==BLACK){
+            whoPlay = WHITE;
+        }else {
+            whoPlay =BLACK;
+        }
+    }else {
+        warning();
+    }
 }
 function warning() {
     document.getElementById("winner").innerHTML="此处不能落子！！";
 }
-function tip(color) {
-       if (color == BLACK&&!winner){
-           document.getElementById("tip").innerHTML="<h1>请白方落子</h1>";
-       }
-       if (color == WHITE&&!winner){
+function tip() {
+       if (whoPlay == BLACK&&!winner){
            document.getElementById("tip").innerHTML="<h1>请黑方落子</h1>";
        }
-
-}
-//白子落子
-function whiteMove() {
-    color = WHITE;
-    var qiziPosition = getqiziPosition();
-    if (checkIfinBoard(qiziPosition)&&checkNull(qiziPosition)){
-        move(qiziPosition);
-        if(ifWin(qiziPosition)){
-            winner = WHITE;
-        }
-        whoPlay = BLACK;
-    }else {
-        warning();
-    }
-}
-//黑子落子
-function blackMove() {
-    color = BLACK;
-    var qiziPosition=getqiziPosition();
-    if(checkIfinBoard(qiziPosition)&&checkNull(qiziPosition)){
-        move(qiziPosition);
-        if(ifWin(qiziPosition)){
-            winner = BLACK;
-        }
-        whoPlay = WHITE;
-    }else {
-        warning();
-    }
-}
-//哪方落子
-function whoMoves() {
-    tip(whoPlay);
-    if(whoPlay==BLACK){
-        blackMove();
-    }else {
-       whiteMove();
-    }
+       if (whoPlay == WHITE&&!winner){
+           document.getElementById("tip").innerHTML="<h1>请白方落子</h1>";
+       }
 }
 function gameOver() {
     document.getElementById("qipan").removeAttribute("onclick");
@@ -267,7 +246,8 @@ function gameOver() {
 //游戏进行
 function gameOn(e) {
         event = e;
-       whoMoves();
+        move();
+        tip();
        if(winner){
            gameOver();
        }

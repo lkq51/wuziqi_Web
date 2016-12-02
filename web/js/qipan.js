@@ -1,9 +1,10 @@
 /**
  * Created by lkq on 2016/11/28.
  */
+
 var qipan = document.getElementById("qipan");
     grid = 15,           //棋盘大小为grid * grid
-    canvasSize = 800,
+    canvasSize = 750,
     chessSize = 20,   //棋子的半径
     chessboardSize = 700, //棋盘的边长
     extra = (canvasSize - chessboardSize) / 2,
