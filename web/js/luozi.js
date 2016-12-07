@@ -51,7 +51,7 @@ function getqiziPosition() {
         if (distances[i]<distances[lowest])
             lowest = i;
     }
-    alert(points[lowest].x+"    "+points[lowest].y);
+    //alert(points[lowest].x+"    "+points[lowest].y);
     points[lowest].x = parseInt(points[lowest].x / interval );
     points[lowest].y = parseInt(points[lowest].y / interval );
     return points[lowest];
@@ -203,6 +203,7 @@ function checkIfinBoard(qiziPosition) {
         return false;
     }
 }
+//检测点击位置是否已有落子
 function checkNull(qiziPosition) {
     if(qizis[qiziPosition.x][qiziPosition.y]!=BLACK&&qizis[qiziPosition.x][qiziPosition.y]!=WHITE){
         return true;
@@ -210,6 +211,7 @@ function checkNull(qiziPosition) {
         return false;
     }
 }
+//落子
 function move(qiziPosition) {
     color = whoPlay;
     qizis[qiziPosition.x][qiziPosition.y] = color;
@@ -225,12 +227,14 @@ function move(qiziPosition) {
     }
     lastPosition = qiziPosition;
 }
+//当棋子落在已有棋子的位置或者是棋盘的边沿发出警告信息
 function warning() {
     document.getElementById("winner").innerHTML="此处不能落子！！";
     setTimeout(function(){
         document.getElementById("winner").innerHTML="";
     },3000);
 }
+//提示哪一方落子
 function tip() {
        if (whoPlay == BLACK&&!winner){
            document.getElementById("tip").innerHTML="<h1>请黑方落子</h1>";
@@ -258,9 +262,9 @@ function gameOn(e) {
            gameOver();
        }
 }
-
-
+//悔棋
 function takeBack() {
-       context.clearRect(lastPosition.x * interval +extra,lastPosition.y * interval + extra, chessSize,chessSize);
+       context.clearRect(lastPosition.x * interval + extra - chessSize,lastPosition.y * interval + extra -chessSize, chessSize * 2,chessSize *2);
        qizis[lastPosition.x][lastPosition.y] = "";
+
 }
