@@ -58,8 +58,8 @@ function getqiziPosition() {
 }
 //在页面上显示出落子
 function draw(qiziPosition) {
-    var qipan = document.getElementById("qipan"),
-        context = qipan.getContext("2d");
+    var qizi = document.getElementById("qizi"),
+        context = qizi.getContext("2d");
     context.fillStyle = color;
     context.beginPath();
     context.arc(qiziPosition.x * interval +extra, qiziPosition.y * interval + extra, chessSize, 0, Math.PI * 2, true);
@@ -264,7 +264,14 @@ function gameOn(e) {
 }
 //悔棋
 function takeBack() {
-       context.clearRect(lastPosition.x * interval + extra - chessSize,lastPosition.y * interval + extra -chessSize, chessSize * 2,chessSize *2);
-       qizis[lastPosition.x][lastPosition.y] = "";
-
+    var qizi = document.getElementById("qizi"),
+        context = qizi.getContext("2d");
+        context.clearRect(lastPosition.x * interval + extra - chessSize,lastPosition.y * interval + extra -chessSize, chessSize * 2,chessSize *2);
+        qizis[lastPosition.x][lastPosition.y] = "";
+        if(whoPlay==WHITE){
+            whoPlay = BLACK;
+        }else {
+           whoPlay = WHITE;
+        }
+        tip();
 }

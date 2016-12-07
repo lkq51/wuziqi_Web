@@ -1,8 +1,17 @@
 body{
     text-align: center;
 }
-#testCanvas{
- margin: 0 auto;
- width: 750px;
- height: 750px;
+#testCanvas {
+    position: absolute;
+    margin: 0 auto;
+    width: 750px;
+    height: 750px;
+    z-index: 1;
+}
+#testCanvas2 {
+    position: absolute;
+    margin: 0 auto;
+    width: 750px;
+    height: 750px;
+    z-index: 5;
 }
