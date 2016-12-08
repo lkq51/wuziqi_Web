@@ -2,6 +2,7 @@
  * Created by lkq on 2016/11/28.
  */
    var event,
+       AI,
        BLACK = "black",
        WHITE = "white",
        winner = "",         //胜利者
@@ -251,8 +252,14 @@ function gameOver() {
 }
 //游戏进行
 function gameOn(e) {
-        event = e;
-        var qiziPosition = getqiziPosition();
+       move({x:7,y:7});
+       tip();
+       if(whoPlay == BLACK){
+           var qiziPosition = airingGo();
+       }else {
+           event = e;
+           var qiziPosition = getqiziPosition();
+       }
         if(checkIfinBoard(qiziPosition)&&checkNull(qiziPosition)) {
             move(qiziPosition);
             tip();
@@ -261,6 +268,11 @@ function gameOn(e) {
         }
        if(winner){
            gameOver();
+       }
+
+
+       if (AI){
+
        }
 }
 //悔棋
@@ -275,4 +287,8 @@ function takeBack() {
            whoPlay = WHITE;
         }
         tip();
+}
+
+function openAI() {
+    AI = true;
 }

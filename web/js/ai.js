@@ -62,7 +62,7 @@ for (var i = 0; i < 11; i++) {
  * AI
  */
 function airingGo() {
-    if (over) {
+    if (winner) {
         return;
     }
 
@@ -85,7 +85,7 @@ function airingGo() {
     // 通过赢法统计数组为两个二维数组分别计分
     for (var i = 0; i < 15; i++) {
         for (var j = 0; j < 15; j++) {
-            if (chessBoard[i][j] == 0) {
+            if (checkNull({x:i,y:j})) {
                 for (var k = 0; k < count; k++) {
                     if (wins[i][j][k]) {
                         if (myWin[k] == 1) {
@@ -138,22 +138,7 @@ function airingGo() {
         }
     }
 
-    oneStep(u, v, false);
-    chessBoard[u][v] = 2;
-
-    for (var k = 0; k < count; k++) {
-        if (wins[u][v][k]) {
-            airingWin[k] ++;
-            myWin[k] = 6;
-            if (airingWin[k] == 5) {
-                window.alert("You Fail!");
-                over = true;
-            }
-        }
-    }
-
-    if (!over) {
-        me = !me;
-    }
-
+    return {
+        x:u,y:v
+    };
 }
