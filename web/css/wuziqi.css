@@ -7,6 +7,7 @@ body{
 }
 #console{
     position: relative;
+    top: 50px;
     z-index: 0;
 }
 #testCanvas {
@@ -21,14 +22,14 @@ body{
     z-index: 1;
 }
 #testCanvas2 {
-    position: relative;
+    position: absolute;
     margin-bottom: 0;
     margin-top: 0;
     padding-bottom: 0;
     padding-top: 0;
     border-bottom: 0;
     border-top: 0;
-    top:0;left: 0;bottom: 0;right: 0;
+    top:50px;left: 0;bottom: 0;right: 0;
     z-index: 1;
 }
 #takeBack{
