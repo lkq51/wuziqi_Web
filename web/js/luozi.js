@@ -2,7 +2,7 @@
  * Created by lkq on 2016/11/28.
  */
    var event,
-       AI,
+       AI = false,
        BLACK = "black",
        WHITE = "white",
        winner = "",         //胜利者
@@ -56,6 +56,7 @@ function getqiziPosition() {
  /*   points[lowest].x = parseInt(points[lowest].x / interval );
      points[lowest].y = parseInt(points[lowest].y / interval );*/
     point={x:Math.floor(clickPosition.x/interval),y:Math.floor(clickPosition.y/interval)};
+    alert(point)
     return point;
 }
 //在页面上显示出落子
@@ -250,30 +251,29 @@ function gameOver() {
     var congratulationWinner = "恭喜执"+winner+"子选手获得胜利";
     document.getElementById("winner").innerHTML = congratulationWinner;
 }
+function startGame() {
+       document.getElementById("qizi").onclick = gameOn(e);
+    if (AI){
+        move({x:7,y:7});
+        tip();
+        gameOn(e);
+    }else {
+        gameOn(e);
+    }
+}
 //游戏进行
 function gameOn(e) {
-       move({x:7,y:7});
-       tip();
-       if(whoPlay == BLACK){
-           var qiziPosition = airingGo();
-       }else {
-           event = e;
-           var qiziPosition = getqiziPosition();
-       }
-        if(checkIfinBoard(qiziPosition)&&checkNull(qiziPosition)) {
-            move(qiziPosition);
-            tip();
-        }else {
-            warning();
-        }
-       if(winner){
-           gameOver();
-       }
-
-
-       if (AI){
-
-       }
+    event = e;
+    var qiziPosition = getqiziPosition();
+    if(checkIfinBoard(qiziPosition)&&checkNull(qiziPosition)) {
+        move(qiziPosition);
+        tip();
+    }else {
+        warning();
+    }
+    if(winner){
+        gameOver();
+    }
 }
 //悔棋
 function takeBack() {
@@ -291,4 +291,11 @@ function takeBack() {
 
 function openAI() {
     AI = true;
+    document.getElementById("closeai").disabled = false;
+    document.getElementById("openai").disabled = true;
+}
+function closeAI() {
+    AI = false;
+    document.getElementById("closeai").disabled = true;
+    document.getElementById("openai").disabled = false;
 }
