@@ -28,8 +28,9 @@ function getCanvasPos(canvas) {
     };
 }
 function getqiziPosition() {
-    var clickPosition = getCanvasPos(qipan);
-    if(clickPosition.x>(extra+chessboardSize)&&clickPosition.x<extra&&clickPosition.y<extra&&clickPosition.y>(extra+chessboardSize)){
+    //var clickPosition = getCanvasPos(qipan);
+    var clickPosition = {x: event.offsetX,y: event.offsetY};
+/*    if(clickPosition.x>(extra+chessboardSize)&&clickPosition.x<extra&&clickPosition.y<extra&&clickPosition.y>(extra+chessboardSize)){
         return null;
     }
     clickPosition.x = clickPosition.x - extra;
@@ -50,11 +51,11 @@ function getqiziPosition() {
     for(var i = 0;i<distances.length;i++){
         if (distances[i]<distances[lowest])
             lowest = i;
-    }
-    //alert(points[lowest].x+"    "+points[lowest].y);
-    points[lowest].x = parseInt(points[lowest].x / interval );
-    points[lowest].y = parseInt(points[lowest].y / interval );
-    return points[lowest];
+    }*/
+ /*   points[lowest].x = parseInt(points[lowest].x / interval );
+     points[lowest].y = parseInt(points[lowest].y / interval );*/
+    point={x:Math.floor(clickPosition.x/interval),y:Math.floor(clickPosition.y/interval)};
+    return point;
 }
 //在页面上显示出落子
 function draw(qiziPosition) {
