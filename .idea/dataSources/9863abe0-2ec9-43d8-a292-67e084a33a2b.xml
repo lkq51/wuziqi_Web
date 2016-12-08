@@ -11,44 +11,36 @@
     <schema id="5" parent="1" name="performance_schema"/>
     <schema id="6" parent="1" name="storyfm"/>
     <schema id="7" parent="1" name="test"/>
-    <schema id="8" parent="1" name="shop"/>
-    <schema id="9" parent="1" name="supermarket"/>
-    <table id="10" parent="2" name="user"/>
-    <view id="11" parent="2" name="hello">
-      <Comment>VIEW</Comment>
-    </view>
-    <column id="12" parent="10" name="id">
+    <schema id="8" parent="1" name="sys"/>
+    <table id="9" parent="2" name="user"/>
+    <column id="10" parent="9" name="id">
       <Position>1</Position>
       <DataType>int(255)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="13" parent="10" name="admin">
+    <column id="11" parent="9" name="admin">
       <Position>2</Position>
       <DataType>bit(1)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="14" parent="10" name="username">
+    <column id="12" parent="9" name="username">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="15" parent="10" name="password">
+    <column id="13" parent="9" name="password">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="16" parent="10" name="email">
+    <column id="14" parent="9" name="email">
       <Position>5</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <key id="17" parent="10" name="PRIMARY">
+    <key id="15" parent="9" name="PRIMARY">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="18" parent="11" name="users">
-      <Position>1</Position>
-      <DataType>varchar(512)|0</DataType>
-    </column>
   </database-model>
 </dataSource>
