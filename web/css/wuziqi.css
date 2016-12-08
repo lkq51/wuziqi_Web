@@ -11,17 +11,25 @@ body{
 }
 #testCanvas {
     position: relative;
-    margin: 0;
-    padding: 0;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-bottom: 0;
+    padding-top: 0;
+    border-bottom: 0;
+    border-top: 0;
     top: 50px;left: 0;bottom: 0;right: 0;
     z-index: 1;
 }
 #testCanvas2 {
     position: relative;
-    margin: 0;
-    padding: 0;
-    top: -705px;left: 0;bottom: 0;right: 0;
-    z-index: 2;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-bottom: 0;
+    padding-top: 0;
+    border-bottom: 0;
+    border-top: 0;
+    top:0;left: 0;bottom: 0;right: 0;
+    z-index: 1;
 }
 #takeBack{
 
