@@ -1,8 +1,37 @@
 body{
     text-align: center;
 }
-#testCanvas{
- margin: 0 auto;
- width: 750px;
- height: 750px;
+#game{
+    position: relative;
+    z-index: 0;
+}
+#console{
+    position: relative;
+    top: 50px;
+    z-index: 0;
+}
+#testCanvas {
+    position: relative;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-bottom: 0;
+    padding-top: 0;
+    border-bottom: 0;
+    border-top: 0;
+    top: 50px;left: 0;bottom: 0;right: 0;
+    z-index: 1;
+}
+#testCanvas2 {
+    position: absolute;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-bottom: 0;
+    padding-top: 0;
+    border-bottom: 0;
+    border-top: 0;
+    top:50px;left: 0;bottom: 0;right: 0;
+    z-index: 2;
+}
+#takeBack{
+
 }

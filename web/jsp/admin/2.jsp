@@ -17,5 +17,6 @@
         Select file to upload <input type="file" name="filename"/><br/>
         <input type="submit" value="upload"/>
     </form>
+    <a href="chat.jsp">Chat</a>
 </body>
 </html>
