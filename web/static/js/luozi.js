@@ -18,16 +18,13 @@
        chessboardSize = 700, //棋盘的边长
        extra = (canvasSize - chessboardSize) / 2,  //棋盘与画布的空余
        interval=chessboardSize / (grid-1); //每个格子的边长
-   for(var i = 0;i<grid;i++){
-       qizis[i] = new Array();
-   }
-function getCanvasPos(canvas) {
+/*function getCanvasPos(canvas) {
     var rect = canvas.getBoundingClientRect();
     return{
         x: event.clientX - rect.left * (canvas.width / rect.width),
         y: event.clientY - rect.top * (canvas.height / rect.height)
     };
-}
+}*/
 function getqiziPosition() {
     //var clickPosition = getCanvasPos(qipan);
     var clickPosition = {x: event.offsetX,y: event.offsetY};
@@ -56,7 +53,6 @@ function getqiziPosition() {
  /*   points[lowest].x = parseInt(points[lowest].x / interval );
      points[lowest].y = parseInt(points[lowest].y / interval );*/
     point={x:Math.floor(clickPosition.x/interval),y:Math.floor(clickPosition.y/interval)};
-    alert(point)
     return point;
 }
 //在页面上显示出落子
@@ -248,21 +244,56 @@ function tip() {
 }
 function gameOver() {
     document.getElementById("qipan").removeAttribute("onclick");
-    var congratulationWinner = "恭喜执"+winner+"子选手获得胜利";
+    var congratulationWinner = "恭喜执" + winner + "子选手获得胜利";
     document.getElementById("winner").innerHTML = congratulationWinner;
 }
 function startGame() {
-       document.getElementById("qizi").onclick = gameOn(e);
-    if (AI){
-        move({x:7,y:7});
+    qizis= new Array();
+    for(var i = 0;i<grid;i++){
+        qizis[i] = new Array();
+    };
+    var  startgame = document.getElementById("startGame");
+    if (AI) {
+        whoPlay = BLACK;
+        move({x: 7, y: 7});
         tip();
-        gameOn(e);
+        document.getElementById("qizi").onclick = gamePVC;
     }else {
-        gameOn(e);
+        document.getElementById("qizi").onclick = gamePVP;
+    }
+    if(startgame.innerHTML=="结束游戏") {
+        var qizi = document.getElementById("qizi"),
+            context = qizi.getContext("2d");
+        context.clearRect(0, 0, canvasSize, canvasSize);
+        document.getElementById("closeai").disabled = true;
+        document.getElementById("openai").disabled = false;
+        startgame.innerHTML="开始游戏";
+    }else {
+        document.getElementById("closeai").disabled = true;
+        document.getElementById("openai").disabled = true;
+        document.getElementById("startGame").innerHTML="结束游戏";
     }
 }
-//游戏进行
-function gameOn(e) {
+//PVC游戏进行
+function gamePVC(e) {
+    event = e;
+    var qiziPosition = getqiziPosition();
+    if (checkIfinBoard(qiziPosition)&&checkNull(qiziPosition)) {
+        move(qiziPosition);
+        tip();
+    }else {
+        warning();
+    }
+    qiziPosition = airingGo();
+    move(qiziPosition);
+    alert(qiziPosition.x+"  "+qiziPosition.y);
+    tip();
+    if (winner){
+        gameOver();
+    }
+}
+//PVP游戏进行
+function gamePVP(e) {
     event = e;
     var qiziPosition = getqiziPosition();
     if(checkIfinBoard(qiziPosition)&&checkNull(qiziPosition)) {
@@ -277,9 +308,14 @@ function gameOn(e) {
 }
 //悔棋
 function takeBack() {
+    if(AI&&whoPlay==WHITE){
+        return;
+    }
     var qizi = document.getElementById("qizi"),
         context = qizi.getContext("2d");
-        context.clearRect(lastPosition.x * interval + extra - chessSize,lastPosition.y * interval + extra -chessSize, chessSize * 2,chessSize *2);
+        context.clearRect(lastPosition.x * interval + extra - chessSize,
+                            lastPosition.y * interval + extra - chessSize,
+                            chessSize * 2,chessSize * 2);
         qizis[lastPosition.x][lastPosition.y] = "";
         if(whoPlay==WHITE){
             whoPlay = BLACK;
@@ -288,14 +324,15 @@ function takeBack() {
         }
         tip();
 }
-
 function openAI() {
     AI = true;
     document.getElementById("closeai").disabled = false;
     document.getElementById("openai").disabled = true;
+    document.getElementById("PVPorPVC").innerHTML = "PVC";
 }
 function closeAI() {
     AI = false;
     document.getElementById("closeai").disabled = true;
     document.getElementById("openai").disabled = false;
+    document.getElementById("PVPorPVC").innerHTML = "PVP";
 }

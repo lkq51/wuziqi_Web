@@ -15,11 +15,11 @@
     <title>Chat</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
-    <link rel="alternate icon" href="assets/i/favicon.ico">
-    <link rel="stylesheet" href="assets/css/amazeui.min.css">
-    <link rel="stylesheet" href="assets/css/app.css">
+    <link rel="alternate icon" href="plugins/assets/i/favicon.ico">
+    <link rel="stylesheet" href="../plugins/assets/css/amazeui.min.css">
+    <link rel="stylesheet" href="../plugins/assets/css/app.css">
 
-    <link href="umeditor1_2_2-utf8-jsp/themes/default/css/umeditor.css" rel="stylesheet">
+    <link href="../plugins/umeditor/themes/default/css/umeditor.css" rel="stylesheet">
     <style>
 
     </style>
@@ -70,15 +70,15 @@
     </div>
 <%--message input end--%>
 <%--[if (gte IE 9)|!(IE)]><!--%>
-<script src="assets/js/jquery.min.js"></script>
+<script src="plugins/assets/js/jquery.min.js"></script>
 <%--[endif]--%>
 <%--[if lte IE 8]--%>
 <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
 <%--[end if]--%>
 <%--umeditor js--%>
-<script charset="utf-8" src="umeditor1_2_2-utf8-jsp/umeditor.config.js"></script>
-<script charset="utf-8" src="umeditor1_2_2-utf8-jsp/umeditor.min.js"></script>
-<script src="umeditor1_2_2-utf8-jsp/lang/zh-cn.js"></script>
+<script charset="utf-8" src="../plugins/umeditor/umeditor.config.js"></script>
+<script charset="utf-8" src="../plugins/umeditor/umeditor.min.js"></script>
+<script src="plugins/umeditor/lang/zh-cn.js"></script>
 <script>
     $(function () {
         //初始化消息输入框
