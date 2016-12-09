@@ -31,7 +31,9 @@ function getCanvasPos(canvas) {
 function getqiziPosition() {
     //var clickPosition = getCanvasPos(qipan);
     var clickPosition = {x: event.offsetX,y: event.offsetY};
-/*    if(clickPosition.x>(extra+chessboardSize)&&clickPosition.x<extra&&clickPosition.y<extra&&clickPosition.y>(extra+chessboardSize)){
+/*    if(clickPosition.x>(extra+chessboardSize)&&clickPosition.x<extra&&clickPosition.y<extra
+                                               &&clickPosition.y>(extra+chessboardSize))
+    {
         return null;
     }
     clickPosition.x = clickPosition.x - extra;
@@ -44,10 +46,14 @@ function getqiziPosition() {
         points[2] = {x: x * interval, y: (y + 1) * interval};
         points[3] = {x: (x + 1) * interval, y: (y + 1) * interval};
         var distances = [];
-        distances[0] = Math.sqrt(Math.pow((clickPosition.x - points[0].x), 2) + Math.pow((clickPosition.y - points[0].y), 2));
-        distances[1] = Math.sqrt(Math.pow((points[1].x - clickPosition.x), 2) + Math.pow((clickPosition.y - points[1].y), 2));
-        distances[2] = Math.sqrt(Math.pow((clickPosition.x - points[2].x), 2) + Math.pow((points[2].y - clickPosition.y), 2));
-        distances[3] = Math.sqrt(Math.pow((points[3].x - clickPosition.x), 2) + Math.pow((points[3].y - clickPosition.y), 2));
+        distances[0] = Math.sqrt(Math.pow((clickPosition.x - points[0].x), 2)
+                                            + Math.pow((clickPosition.y - points[0].y), 2));
+        distances[1] = Math.sqrt(Math.pow((points[1].x - clickPosition.x), 2)
+                                            + Math.pow((clickPosition.y - points[1].y), 2));
+        distances[2] = Math.sqrt(Math.pow((clickPosition.x - points[2].x), 2)
+                                            + Math.pow((points[2].y - clickPosition.y), 2));
+        distances[3] = Math.sqrt(Math.pow((points[3].x - clickPosition.x), 2)
+                                            + Math.pow((points[3].y - clickPosition.y), 2));
         lowest = 0;
     for(var i = 0;i<distances.length;i++){
         if (distances[i]<distances[lowest])
@@ -56,7 +62,7 @@ function getqiziPosition() {
  /*   points[lowest].x = parseInt(points[lowest].x / interval );
      points[lowest].y = parseInt(points[lowest].y / interval );*/
     point={x:Math.floor(clickPosition.x/interval),y:Math.floor(clickPosition.y/interval)};
-    alert(point)
+    alert(point);
     return point;
 }
 //在页面上显示出落子
@@ -252,17 +258,13 @@ function gameOver() {
     document.getElementById("winner").innerHTML = congratulationWinner;
 }
 function startGame() {
-       document.getElementById("qizi").onclick = gameOn(e);
-    if (AI){
-        move({x:7,y:7});
+    if (AI) {
+        move({x: 7, y: 7});
         tip();
-        gameOn(e);
-    }else {
-        gameOn(e);
     }
 }
 //游戏进行
-function gameOn(e) {
+document.getElementById("qizi").onclick=function(e) {
     event = e;
     var qiziPosition = getqiziPosition();
     if(checkIfinBoard(qiziPosition)&&checkNull(qiziPosition)) {
@@ -274,7 +276,7 @@ function gameOn(e) {
     if(winner){
         gameOver();
     }
-}
+};
 //悔棋
 function takeBack() {
     var qizi = document.getElementById("qizi"),
