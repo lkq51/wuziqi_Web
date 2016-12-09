@@ -8,6 +8,7 @@
 	<constant name="struts.devMode" value="true"/>
 	<constant name="struts.i18n.encoding" value="UTF-8"/>
 	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.action.excludePattern" value="/static/.*?" />
 	<!--指定国际化资源文件的baseName为messageResource-->
 	<constant name="struts.custom.i18n.resources" value="messageResource"/>
 	

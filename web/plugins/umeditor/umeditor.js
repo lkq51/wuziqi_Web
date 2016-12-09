@@ -7158,9 +7158,9 @@ UM.commands['preview'] = {
             c = this.getContent(null,null,true),
             path = this.getOpt('UMEDITOR_HOME_URL'),
             formula = c.indexOf('mathquill-embedded-latex')!=-1 ?
-                '<link rel="stylesheet" href="' + path + 'third-party/mathquill/mathquill.css"/>' +
-                '<script src="' + path + 'third-party/jquery.min.js"></script>' +
-                '<script src="' + path + 'third-party/mathquill/mathquill.min.js"></script>':'';
+                '<link rel="stylesheet" href=' + path + '"third-party/mathquill/mathquill.css"/>' +
+                '<script src=' + path + '"third-party/jquery.min.js"></script>' +
+                '<script src=' + path + '"third-party/mathquill/mathquill.min.js"></script>':'';
         d.open();
         d.write('<html><head>' + formula + '</head><body><div>'+c+'</div></body></html>');
         d.close();
@@ -7304,7 +7304,7 @@ UM.plugins['video'] = function (){
         return  !toEmbed ?
 
                 '<img ' + (id ? 'id="' + id+'"' : '') + ' width="'+ width +'" height="' + height + '" _url="'+url+'" class="edui-faked-video"'  +
-                ' src="' + me.options.UMEDITOR_HOME_URL+'themes/default/images/spacer.gif" style="background:url('+me.options.UMEDITOR_HOME_URL+'themes/default/images/videologo.gif) no-repeat center center; border:1px solid gray;'+(align ? 'float:' + align + ';': '')+'" />'
+                ' src=' + me.options.UMEDITOR_HOME_URL+'"themes/default/images/spacer.gif" style="background:url('+me.options.UMEDITOR_HOME_URL+'themes/default/images/videologo.gif) no-repeat center center; border:1px solid gray;'+(align ? 'float:' + align + ';': '')+'" />'
 
                 :
                 '<embed type="application/x-shockwave-flash" class="edui-faked-video" pluginspage="http://www.macromedia.com/go/getflashplayer"' +

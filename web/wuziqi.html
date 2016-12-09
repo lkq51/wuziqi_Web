@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>五子棋游戏</title>
-    <link rel="stylesheet" type="text/css" href="css/wuziqi.css"> 
-    <script type="text/javascript" defer="defer" src="js/qipan.js"></script>
-    <script type="text/javascript" src="js/ai.js"></script>
-    <script type="text/javascript" src="js/luozi.js"></script>
+    <link rel="stylesheet" type="text/css" href="static/css/wuziqi.css">
+    <script type="text/javascript" defer="defer" src="static/js/qipan.js"></script>
+    <script type="text/javascript" src="static/js/ai.js"></script>
+    <script type="text/javascript" src="static/js/luozi.js"></script>
 </head>
 <body>
     <div id="game">
@@ -16,7 +16,7 @@
             </canvas>
         </div>
         <div id="testCanvas2">
-            <canvas  id="qizi" width="750" height="750">
+            <canvas onclick="gamePVP(event)" id="qizi" width="750" height="750">
                 your browser does not support the HTML5 canvas tag.
             </canvas>
         </div>
@@ -29,6 +29,7 @@
         </div>
         <div id="winner"></div>
         <button id="openai" onclick="openAI()">人机对战</button>
+        <h6 id="PVPorPVC">PVP</h6>
         <button id="closeai" onclick="closeAI()" disabled="true">人人对战</button>
     </div>
 </body>
