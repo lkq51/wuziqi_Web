@@ -24,7 +24,7 @@
 				/jsp/user/1.jsp
 			</result>
 			<result name="restart">
-				index.jsp
+				/jsp/index.jsp
 			</result>
 			<result name="admin">
 				/jsp/admin/2.jsp
