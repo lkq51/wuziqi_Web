@@ -22,10 +22,10 @@
         <element id="library" level="project" name="Maven: net.sf.ezmorph:ezmorph:1.0.6" />
         <element id="library" level="project" name="Maven: net.sf.json-lib:json-lib:2.4" />
         <element id="library" level="project" name="mysql-connector-java-5.1.38" />
-        <element id="library" level="project" name="Spring-4.3.3.RELEASE" />
-        <element id="library" level="project" name="spring-web-4.3.3.RELEASE" />
         <element id="library" level="project" name="Struts 2-2.3.20.1" />
         <element id="library" level="project" name="struts2-spring-plugin-2.3.16.3" />
+        <element id="library" level="project" name="aopalliance-1.0" />
+        <element id="library" level="project" name="commons-logging-1.2" />
       </element>
       <element id="javaee-facet-resources" facet="wuziqi_web/web/Web" />
       <element id="directory" name="wuziqi.war">
