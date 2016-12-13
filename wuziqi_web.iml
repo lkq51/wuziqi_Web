@@ -5,7 +5,7 @@
       <configuration>
         <datasource-map>
           <unit-entry name="hibernate.cfg.xml" value="3394f210-b4ad-4c43-8620-4f97d7708166" />
-          <unit-entry name="sessionFactory" value="5608ff4a-b61e-4ca8-bd64-f75645afc455" />
+          <unit-entry name="sessionFactory" value="dataSource" />
         </datasource-map>
         <naming-strategy-map />
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/main/resources/hibernate.cfg.xml" />
@@ -34,7 +34,6 @@
     <facet type="Spring" name="Spring">
       <configuration>
         <fileset id="fileset" name="Spring Application Context" removed="false">
-          <file>file://$MODULE_DIR$/src/spring-config.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/spring-config.xml</file>
           <file>file://$MODULE_DIR$/src/main/resources/spring-mvc.xml</file>
         </fileset>
@@ -67,10 +66,6 @@
     <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="library" name="commons-logging-1.2" level="project" />
     <orderEntry type="library" name="aopalliance-1.0" level="project" />
-    <orderEntry type="library" name="Maven: jstl:jstl:1.2" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.21" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.slf4j:jcl-over-slf4j:1.7.21" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:jul-to-slf4j:1.7.21" level="project" />
     <orderEntry type="library" name="Maven: log4j:log4j:1.2.16" level="project" />
     <orderEntry type="library" name="Maven: c3p0:c3p0:0.9.1" level="project" />
     <orderEntry type="library" name="Maven: aspectj:aspectjweaver:1.5.3" level="project" />
@@ -82,6 +77,7 @@
     <orderEntry type="library" name="Maven: net.sf.ezmorph:ezmorph:1.0.6" level="project" />
     <orderEntry type="library" name="Maven: net.sf.json-lib:json-lib:2.4" level="project" />
     <orderEntry type="library" name="Maven: javax.websocket:javax.websocket-api:1.0" level="project" />
+    <orderEntry type="library" name="Maven: jstl:jstl:1.2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-core:4.3.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-web:4.3.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-beans:4.3.4.RELEASE" level="project" />
@@ -92,11 +88,14 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-jdbc:4.3.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-webmvc:4.3.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-expression:4.3.4.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-webmvc-portlet:3.1.2.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-asm:3.1.2.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:4.3.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context-support:4.3.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-test:4.3.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-commons-core:1.4.1.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-websocket:4.3.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-messaging:4.3.4.RELEASE" level="project" />
+    <orderEntry type="library" name="org.slf4j:jul-to-slf4j:1.7.7" level="project" />
   </component>
 </module>

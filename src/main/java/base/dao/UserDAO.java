@@ -9,12 +9,12 @@ import java.util.List;
 /**
  * Created by lkq on 2016/10/12.
  */
-@Service(value = "userDao")
+@Service(value = "userDAO")
 public interface UserDAO extends BaseDAO{
     List<User> selectAll(@Param("start") int start,@Param("end") int end);
-    User selectUserByUserid(String userid);
+    User selectUserByUserid(int userid);
     User selectCount();
     boolean insert (User user);
     boolean update (User user);
-    boolean delete (String userid);
+    boolean delete (int userid);
 }

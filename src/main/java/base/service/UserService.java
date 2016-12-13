@@ -9,10 +9,10 @@ import java.util.List;
  */
 public interface UserService {
     List<User> selectAll(int page,int pageSize);
-    User selectUserByUserid(String userid);
+    User selectUserByUserid(int userid);
     int selectCount(int pageSize);
     boolean insert(User user);
     boolean update(User user);
-    boolean delete(String userid);
+    boolean delete(int userid);
 
 }

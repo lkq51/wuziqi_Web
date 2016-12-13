@@ -1,3 +1,4 @@
+/*
 package base.controller;
 
 import base.model.User;
@@ -10,9 +11,11 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+*/
 /**
  * Created by lkq on 2016/10/12.
- */
+ *//*
+
 public class loginAction extends ActionSupport{
     private String userName;
     private String password;
@@ -72,3 +75,4 @@ public class loginAction extends ActionSupport{
         return ret;
     }
 }
+*/

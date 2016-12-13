@@ -16,7 +16,10 @@
 	   http://www.springframework.org/schema/aop
 	   http://www.springframework.org/schema/aop/spring-aop.xsd">
 		<context:annotation-config/>
-		<context:component-scan base-package="base"/>
+	<context:component-scan base-package="base.*">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
+
 		<!--定义使用hibernate-->
 		<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 			<property name="dataSource" ref="dataSource"></property>
@@ -48,7 +51,7 @@
 			<property name="userDAO" ref="userDAO"></property>
 		</bean>
 		<!--表现层-->
-		<bean id="loginAction" class="base.controller.loginAction">
+		<bean id="loginAction" class="base.controller.UserController">
 			<property name="userService" ref="userServiceTarget"></property>
 		</bean>
 		<!--配置事务管理器-->

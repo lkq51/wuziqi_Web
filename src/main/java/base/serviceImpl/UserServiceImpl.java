@@ -1,6 +1,7 @@
 package base.serviceImpl;
 
 import base.dao.UserDAO;
+import base.dao.UserDAOimpl;
 import base.model.User;
 import base.service.UserService;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User selectUserByUserid(String userid) {
+    public User selectUserByUserid(int userid) {
         return userDAO.selectUserByUserid(userid);
     }
 
@@ -48,7 +49,15 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean delete(String userid) {
+    public boolean delete(int userid) {
         return userDAO.delete(userid);
+    }
+
+    public void setUserDAO(UserDAO userDAO) {
+        this.userDAO = userDAO;
+    }
+
+    public UserDAO getUserDAO() {
+        return userDAO;
     }
 }

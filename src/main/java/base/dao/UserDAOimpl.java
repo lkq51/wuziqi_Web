@@ -16,7 +16,7 @@ public class UserDAOimpl extends BaseDAOImpl implements UserDAO {
     }
 
     @Override
-    public User selectUserByUserid(String userid) {
+    public User selectUserByUserid(int userid) {
         return null;
     }
 
@@ -36,7 +36,7 @@ public class UserDAOimpl extends BaseDAOImpl implements UserDAO {
     }
 
     @Override
-    public boolean delete(String userid) {
+    public boolean delete(int userid) {
         return false;
     }
 }

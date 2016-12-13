@@ -27,7 +27,7 @@
       </div>
       <div class="clear"></div>
       <div class="avtar"><img src="<%=path%>/static/img/avtar.png"/></div>
-      <form id="login-form" action="loginaction"  method="post" onsubmit="return checkLoginForm()">
+      <form id="login-form" action="<%=path%>/user/login"  method="post" onsubmit="return checkLoginForm()">
         <div class="key">
           <input id="userName" name="userName" type="text" placeholder="请输入帐号">
         </div>

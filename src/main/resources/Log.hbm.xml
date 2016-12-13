@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="base.model.Log" table="log" schema="wuziqi">
+        <id name="id">
+            <column name="id" sql-type="int(11)"/>
+        </id>
+        <property name="userid">
+            <column name="userid" sql-type="int(11)"/>
+        </property>
+        <property name="username">
+            <column name="username" sql-type="varchar(255)"/>
+        </property>
+        <property name="time">
+            <column name="time" sql-type="time"/>
+        </property>
+        <property name="detail">
+            <column name="detail" sql-type="text"/>
+        </property>
+        <property name="ip">
+            <column name="ip" sql-type="text"/>
+        </property>
+        <property name="type">
+            <column name="type" sql-type="text"/>
+        </property>
+    </class>
+</hibernate-mapping>
