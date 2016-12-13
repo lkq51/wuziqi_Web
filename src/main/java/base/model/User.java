@@ -1,10 +1,14 @@
 package base.model;
 
+import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 import javax.persistence.*;
 
 /**
  * Created by lou on 16/11/7.
  */
+@Repository(value = "user")
 @Entity
 @Table(name = "user", schema = "wuziqi")
 public class User {

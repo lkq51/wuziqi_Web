@@ -1,14 +1,20 @@
 package base.dao;
 
 import base.model.User;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Created by lkq on 2016/10/12.
  */
+@Service(value = "userDao")
 public interface UserDAO extends BaseDAO{
-    public User loginCheck(String name, String password);
-
-    public void save( User user );
-
-
+    List<User> selectAll(@Param("start") int start,@Param("end") int end);
+    User selectUserByUserid(String userid);
+    User selectCount();
+    boolean insert (User user);
+    boolean update (User user);
+    boolean delete (String userid);
 }

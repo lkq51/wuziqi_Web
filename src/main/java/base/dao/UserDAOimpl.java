@@ -1,24 +1,42 @@
 package base.dao;
 
 import base.model.User;
+import org.springframework.data.repository.query.Param;
+
 import java.util.List;
 
 /**
  * Created by lkq on 2016/10/12.
  */
 public class UserDAOimpl extends BaseDAOImpl implements UserDAO {
-   @Override
-    public User loginCheck(String userName, String password) {
-        String hql= String.format("from User u where u.username ='%s' and u.password= '%s'", userName, password);
-        List<User> list= (List<User>) this.getHibernateTemplate().find(hql);
-        if (list!=null&&list.size()>0){
-            super.logger.info("login check succ,user.username="+list.get(0).getUsername());
-            return list.get(0);
-        }else {
-            return null;
-        }
+
+    @Override
+    public List<User> selectAll(@Param("start") int start, @Param("end") int end) {
+        return null;
     }
-    public void save(User user) {
-        super.saveEntity(user);
+
+    @Override
+    public User selectUserByUserid(String userid) {
+        return null;
+    }
+
+    @Override
+    public User selectCount() {
+        return null;
+    }
+
+    @Override
+    public boolean insert(User user) {
+        return false;
+    }
+
+    @Override
+    public boolean update(User user) {
+        return false;
+    }
+
+    @Override
+    public boolean delete(String userid) {
+        return false;
     }
 }
