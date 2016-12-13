@@ -8,10 +8,8 @@
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Hibernate 4.2.2-4.2.2" />
-          <element id="library" level="project" name="Spring-4.3.3.RELEASE" />
           <element id="library" level="project" name="Struts 2-2.3.20.1" />
           <element id="library" level="project" name="mysql-connector-java-5.1.38" />
-          <element id="library" level="project" name="spring-web-4.3.3.RELEASE" />
           <element id="library" level="project" name="struts2-spring-plugin-2.3.16.3" />
           <element id="library" level="project" name="aspectjweaver" />
           <element id="library" level="project" name="Maven: log4j:log4j:1.2.16" />
