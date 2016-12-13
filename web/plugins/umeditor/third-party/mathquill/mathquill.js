@@ -342,7 +342,7 @@ var manageTextarea = (function() {
       // textarea.
       //
       // It's pretty nifty that by changing focus in this handler,
-      // we can change the target of the default action.  (This works
+      // we can change the target of the default controller.  (This works
       // on keydown too, FWIW).
       //
       // And by nifty, we mean dumb (but useful sometimes).

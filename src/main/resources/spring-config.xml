@@ -44,11 +44,11 @@
 			<property name="hibernateTemplate" ref="hibernateTemplate"></property>
 		</bean>
 		<!--业务层-->
-		<bean id="userServiceTarget" class="base.service.UserServiceImpl">
+		<bean id="userServiceTarget" class="base.serviceImpl.UserServiceImpl">
 			<property name="userDAO" ref="userDAO"></property>
 		</bean>
 		<!--表现层-->
-		<bean id="loginAction" class="base.action.loginAction">
+		<bean id="loginAction" class="base.controller.loginAction">
 			<property name="userService" ref="userServiceTarget"></property>
 		</bean>
 		<!--配置事务管理器-->

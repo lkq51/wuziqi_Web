@@ -1,7 +1,8 @@
-package base.service;
+package base.serviceImpl;
 
 import base.dao.UserDAO;
 import base.model.User;
+import base.service.UserService;
 
 /**
  * Created by lkq on 2016/10/12.

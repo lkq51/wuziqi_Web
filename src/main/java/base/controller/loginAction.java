@@ -1,4 +1,4 @@
-package base.action;
+package base.controller;
 
 import base.model.User;
 import com.opensymphony.xwork2.ActionSupport;

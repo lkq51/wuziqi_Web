@@ -19,7 +19,7 @@
 	<constant name="struts.multipart.saveDir" value="D:/test"/>
 	
 	<package name="form" namespace="/" extends="struts-default">
-		<action name="loginaction" class="base.action.loginAction">
+		<action name="loginaction" class="base.controller.loginAction">
 			<result name="user">
 				/jsp/user/1.jsp
 			</result>

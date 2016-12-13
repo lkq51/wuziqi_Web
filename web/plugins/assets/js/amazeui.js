@@ -1955,7 +1955,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	   * @param {String} value
 	   */
 	  set: function(value) {
-	    // find out the touch-action by the event handlers
+	    // find out the touch-controller by the event handlers
 	    if (value == TOUCH_ACTION_COMPUTE) {
 	      value = this.compute();
 	    }
@@ -1995,7 +1995,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var srcEvent = input.srcEvent;
 	    var direction = input.offsetDirection;
 
-	    // if the touch action did prevented once this session
+	    // if the touch controller did prevented once this session
 	    if (this.manager.session.prevented) {
 	      srcEvent.preventDefault();
 	      return;
@@ -2083,9 +2083,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	  var cssSupports = window.CSS && window.CSS.supports;
 	  ['auto', 'manipulation', 'pan-y', 'pan-x', 'pan-x pan-y', 'none'].forEach(function(val) {
 
-	    // If css.supports is not supported but there is native touch-action assume it supports
+	    // If css.supports is not supported but there is native touch-controller assume it supports
 	    // all values. This is the case for IE 10 and 11.
-	    touchMap[val] = cssSupports ? window.CSS.supports('touch-action', val) : true;
+	    touchMap[val] = cssSupports ? window.CSS.supports('touch-controller', val) : true;
 	  });
 	  return touchMap;
 	}
@@ -2354,7 +2354,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  process: function(inputData) { }, // jshint ignore:line
 
 	  /**
-	   * return the preferred touch-action
+	   * return the preferred touch-controller
 	   * @virtual
 	   * @returns {Array}
 	   */
@@ -3076,7 +3076,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	      return;
 	    }
 
-	    // run the touch-action polyfill
+	    // run the touch-controller polyfill
 	    this.touchAction.preventDefaults(inputData);
 
 	    var recognizer;
@@ -3448,17 +3448,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	ath.intl = {
 	  en_us: {
 	    ios: 'To add this web app to the home screen: tap %icon and then <strong>Add to Home Screen</strong>.',
-	    android: 'To add this web app to the home screen open the browser option menu and tap on <strong>Add to homescreen</strong>. <small>The menu can be accessed by pressing the menu hardware button if your device has one, or by tapping the top right menu icon <span class="ath-action-icon">icon</span>.</small>'
+	    android: 'To add this web app to the home screen open the browser option menu and tap on <strong>Add to homescreen</strong>. <small>The menu can be accessed by pressing the menu hardware button if your device has one, or by tapping the top right menu icon <span class="ath-controller-icon">icon</span>.</small>'
 	  },
 
 	  zh_cn: {
 	    ios: '如要把应用程式加至主屏幕,请点击%icon, 然后<strong>加至主屏幕</strong>',
-	    android: 'To add this web app to the home screen open the browser option menu and tap on <strong>Add to homescreen</strong>. <small>The menu can be accessed by pressing the menu hardware button if your device has one, or by tapping the top right menu icon <span class="ath-action-icon">icon</span>.</small>'
+	    android: 'To add this web app to the home screen open the browser option menu and tap on <strong>Add to homescreen</strong>. <small>The menu can be accessed by pressing the menu hardware button if your device has one, or by tapping the top right menu icon <span class="ath-controller-icon">icon</span>.</small>'
 	  },
 
 	  zh_tw: {
 	    ios: '如要把應用程式加至主屏幕, 請點擊%icon, 然後<strong>加至主屏幕</strong>.',
-	    android: 'To add this web app to the home screen open the browser option menu and tap on <strong>Add to homescreen</strong>. <small>The menu can be accessed by pressing the menu hardware button if your device has one, or by tapping the top right menu icon <span class="ath-action-icon">icon</span>.</small>'
+	    android: 'To add this web app to the home screen open the browser option menu and tap on <strong>Add to homescreen</strong>. <small>The menu can be accessed by pressing the menu hardware button if your device has one, or by tapping the top right menu icon <span class="ath-controller-icon">icon</span>.</small>'
 	  }
 	};
 
@@ -3811,8 +3811,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	      message = ath.intl[ath.language][ath.OS];
 	    }
 
-	    // add the action icon
-	    message = '<p>' + message.replace('%icon', '<span class="ath-action-icon">icon</span>') + '</p>';
+	    // add the controller icon
+	    message = '<p>' + message.replace('%icon', '<span class="ath-controller-icon">icon</span>') + '</p>';
 
 	    // create the message container
 	    this.viewport = document.createElement('div');
