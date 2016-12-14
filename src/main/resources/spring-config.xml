@@ -24,10 +24,13 @@
 		<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 			<property name="dataSource" ref="dataSource"></property>
 			<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
-		</bean>
-
-		<bean id="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-			<property name="sessionFactory" ref="sessionFactory"/>
+			<!--注解扫描包-->
+			<property name="annotatedClasses">
+				<list>
+					<value>base.model.Log</value>
+					<value>base.model.User</value>
+				</list>
+			</property>
 		</bean>
 		<!--定义数据源-->
 		<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
@@ -39,21 +42,7 @@
 		<bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate">
 			<property name="sessionFactory" ref="sessionFactory"></property>
 		</bean>
-		<!--dao层-->
-		<bean id="baseDAO" class="base.dao.BaseDAOImpl">
-			<property name="hibernateTemplate" ref="hibernateTemplate"></property>
-		</bean>
-		<bean id="userDAO" class="base.dao.UserDAOimpl">
-			<property name="hibernateTemplate" ref="hibernateTemplate"></property>
-		</bean>
-		<!--业务层-->
-		<bean id="userServiceTarget" class="base.serviceImpl.UserServiceImpl">
-			<property name="userDAO" ref="userDAO"></property>
-		</bean>
-		<!--表现层-->
-		<bean id="loginAction" class="base.controller.UserController">
-			<property name="userService" ref="userServiceTarget"></property>
-		</bean>
+
 		<!--配置事务管理器-->
 		<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
 			<property name="sessionFactory" ref="sessionFactory"/>

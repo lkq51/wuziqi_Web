@@ -1,7 +1,6 @@
 package base.serviceImpl;
 
 import base.dao.UserDAO;
-import base.dao.UserDAOimpl;
 import base.model.User;
 import base.service.UserService;
 import org.springframework.stereotype.Service;

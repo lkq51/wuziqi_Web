@@ -47,7 +47,6 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-websocket:4.3.4.RELEASE" />
         </element>
       </element>
-      <element id="library" level="project" name="lib" />
       <element id="javaee-facet-resources" facet="wuziqi_web/web/Web" />
       <element id="javaee-facet-resources" facet="wuziqi_web/javaeeApplication/javaEEApplication" />
     </root>

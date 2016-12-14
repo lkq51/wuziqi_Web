@@ -41,6 +41,7 @@
 		<mvc:interceptor>
 			<mvc:mapping path="/**"/>
 			<mvc:exclude-mapping path="/login.jsp"/>
+			<mvc:exclude-mapping path="/common/**"/>
 			<mvc:exclude-mapping path="/plugins/**"/>
 			<mvc:exclude-mapping path="/staitic/**"/>
 			<mvc:exclude-mapping path="/upload/**"/>
