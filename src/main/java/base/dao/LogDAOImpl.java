@@ -11,14 +11,24 @@ import java.util.List;
 public class LogDAOImpl  extends BaseDAOImpl implements LogDAO{
 
     @Override
-    public List<Log> selectAll() {
-        return getAllEntity("Log");
+    public List<Log> selectAll(int start, int end) {
+        String hql = "Select * from Log (select A.*,Rownum RN from (select * from Log Order by Desc)A) where RN between :start and :end";
+        return null;
     }
 
     @Override
-    public List<Log> selectLogByUserid(int userid) {
-        return (List<Log>)getEntityById(Log.class,String.valueOf(userid));
+    public List<Log> selectLogByUserid(int userid, int start, int end) {
+        return null;
+    }
 
+    @Override
+    public Log selectCount() {
+        return null;
+    }
+
+    @Override
+    public Log selectCountByUserid(int userid) {
+        return null;
     }
 
     @Override
@@ -34,7 +44,7 @@ public class LogDAOImpl  extends BaseDAOImpl implements LogDAO{
 
     @Override
     public boolean deleteThisUser(int userid) {
-
+        String hql ="From Log";
         return false;
     }
 

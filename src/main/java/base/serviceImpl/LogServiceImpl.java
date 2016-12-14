@@ -29,7 +29,7 @@ public class LogServiceImpl implements LogService {
     }
 
     @Override
-    public List<Log> selectLogByUserid(String userid, int page, int pageSize) {
+    public List<Log> selectLogByUserid(int userid, int page, int pageSize) {
         int start = 1;
         int end = pageSize;
         if (page != 1){
@@ -41,12 +41,12 @@ public class LogServiceImpl implements LogService {
 
     @Override
     public int selectCount(int pageSize) {
-        int pageCount = logDAO.selectCount().getUserid();
+        int pageCount = logDAO.selectCount().getId();
         return pageCount % pageSize == 0 ? pageCount/pageSize : pageCount/pageSize +1;
     }
 
     @Override
-    public int selecrCountByUserid(String userid, int pageSize) {
+    public int selecrCountByUserid(int userid, int pageSize) {
         int pageCount = logDAO.selectCountByUserid(userid).getUserid();
         return pageCount % pageSize == 0 ? pageCount/pageSize : pageCount/pageSize +1;
     }

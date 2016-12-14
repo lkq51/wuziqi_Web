@@ -13,7 +13,7 @@ import java.util.List;
 public interface UserDAO extends BaseDAO{
     List<User> selectAll(@Param("start") int start,@Param("end") int end);
     User selectUserByUserid(int userid);
-    //User selectCount();
+    User selectCount();
     boolean insert (User user);
     boolean update (User user);
     boolean delete (int userid);
