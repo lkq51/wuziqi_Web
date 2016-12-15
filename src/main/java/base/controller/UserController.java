@@ -11,7 +11,12 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 /**
  * Created by lkq on 2016/12/13.
@@ -91,14 +96,56 @@ public class UserController {
     }
     /**
      * 头像上传
-     *
+     *@param userid
+     *@param file
+     *@param request
+     *@return
      */
     @RequestMapping(value = "{userid}/upload")
-    public String upload(@PathVariable("userid") int userid, MultipartFile file,HttpServletRequest request,UploadUtil uploadUtil,RedirectAttributes attributes,NetUtil netUtil,LogUtil logUtil,CommonDate date,WordDefined defined){
+    public String upload(@PathVariable("userid") int userid, String username,MultipartFile file,HttpServletRequest request,UploadUtil uploadUtil,RedirectAttributes attributes,NetUtil netUtil,LogUtil logUtil,CommonDate date,WordDefined defined){
         try {
             String fileurl = uploadUtil.upload(request,"uplaod",userid);
             user = userService.selectUserByUserid(userid);
+            user.setProfilehead(fileurl);
+            boolean flag = userService.update(user);
+            if (flag){
+                logService.insert(logUtil.setLog(userid,username,date.getTime24(),defined.LOG_TYPE_UPDATE,defined.LOG_DETAIL_UPDATE_PROFILEHEAD,netUtil.getIpAddress(request)));
+                attributes.addFlashAttribute("message","["+userid+"]头像更新成功!");
+            }
+        }catch (Exception e){
+            attributes.addFlashAttribute("error","["+userid+"]头像更新失败!");
+        }
+        return "redirect:/{userid}/config";
+    }
 
+    /**
+     * 获取用户头像
+     * @param userid
+     */
+    @RequestMapping(value = "{userid}/head")
+    @ResponseBody
+    public void head(@PathVariable("userid") int userid, HttpServletRequest request, HttpServletResponse response){
+        try {
+            user =userService.selectUserByUserid(userid);
+            String path = user.getProfilehead();
+            String rootPath = request.getSession().getServletContext().getRealPath("/");
+            String picturePath = rootPath + path;
+            response.setContentType("image/jpeg;charset=utf-8");
+            ServletOutputStream outputStream = response.getOutputStream();
+            FileInputStream inputStream = new FileInputStream(picturePath);
+            byte[] buffer = new byte[1024];
+            int i = -1;
+            while ((i=inputStream.read(buffer))!=-1){
+                outputStream.write(buffer,0,i);
+            }
+            outputStream.flush();
+            outputStream.close();
+            inputStream.close();
+            outputStream = null;
+        }catch (FileNotFoundException e){
+            e.printStackTrace();
+        }catch (IOException e){
+            e.printStackTrace();
         }
     }
 
