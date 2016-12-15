@@ -11,78 +11,116 @@
     <schema id="5" parent="1" name="performance_schema"/>
     <schema id="6" parent="1" name="storyfm"/>
     <schema id="7" parent="1" name="test"/>
-    <schema id="8" parent="1" name="sys"/>
-    <table id="9" parent="2" name="log"/>
-    <table id="10" parent="2" name="user"/>
-    <column id="11" parent="9" name="id">
+    <schema id="8" parent="1" name="shop"/>
+    <schema id="9" parent="1" name="supermarket"/>
+    <table id="10" parent="2" name="log"/>
+    <table id="11" parent="2" name="user"/>
+    <view id="12" parent="2" name="hello">
+      <Comment>VIEW</Comment>
+    </view>
+    <column id="13" parent="10" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="12" parent="9" name="userid">
+    <column id="14" parent="10" name="userid">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="13" parent="9" name="username">
+    <column id="15" parent="10" name="username">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
-      <NotNull>1</NotNull>
     </column>
-    <column id="14" parent="9" name="time">
+    <column id="16" parent="10" name="time">
       <Position>4</Position>
-      <DataType>time|0</DataType>
-      <NotNull>1</NotNull>
+      <DataType>datetime|0</DataType>
     </column>
-    <column id="15" parent="9" name="type">
+    <column id="17" parent="10" name="type">
       <Position>5</Position>
-      <DataType>text|0</DataType>
-      <NotNull>1</NotNull>
+      <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="16" parent="9" name="detail">
+    <column id="18" parent="10" name="detail">
       <Position>6</Position>
-      <DataType>text|0</DataType>
-      <NotNull>1</NotNull>
+      <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="17" parent="9" name="ip">
+    <column id="19" parent="10" name="ip">
       <Position>7</Position>
-      <DataType>text|0</DataType>
-      <NotNull>1</NotNull>
+      <DataType>varchar(255)|0</DataType>
     </column>
-    <key id="18" parent="9" name="PRIMARY">
+    <key id="20" parent="10" name="PRIMARY">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="19" parent="10" name="id">
+    <column id="21" parent="11" name="id">
       <Position>1</Position>
       <DataType>int(255)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="20" parent="10" name="admin">
+    <column id="22" parent="11" name="admin">
       <Position>2</Position>
       <DataType>bit(1)|0</DataType>
       <NotNull>1</NotNull>
       <DefaultExpression>b&apos;0&apos;</DefaultExpression>
     </column>
-    <column id="21" parent="10" name="username">
+    <column id="23" parent="11" name="username">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="22" parent="10" name="password">
+    <column id="24" parent="11" name="password">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="23" parent="10" name="email">
+    <column id="25" parent="11" name="email">
       <Position>5</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <key id="24" parent="10" name="PRIMARY">
+    <column id="26" parent="11" name="nickname">
+      <Position>6</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="27" parent="11" name="sex">
+      <Position>7</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="28" parent="11" name="age">
+      <Position>8</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="29" parent="11" name="profilehead">
+      <Position>9</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="30" parent="11" name="profile">
+      <Position>10</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="31" parent="11" name="registertime">
+      <Position>11</Position>
+      <DataType>datetime|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="32" parent="11" name="lastlogintime">
+      <Position>12</Position>
+      <DataType>datetime|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="33" parent="11" name="status">
+      <Position>13</Position>
+      <DataType>bit(1)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="34" parent="11" name="PRIMARY">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
+    <column id="35" parent="12" name="users">
+      <Position>1</Position>
+      <DataType>varchar(512)|0</DataType>
+    </column>
   </database-model>
 </dataSource>

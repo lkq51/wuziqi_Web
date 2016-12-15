@@ -4,6 +4,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 
 /**
  * Created by lou on 16/11/7.
@@ -17,6 +18,14 @@ public class User {
     private String username;
     private String password;
     private String email;
+    private String nickname;
+    private String sex;
+    private Integer age;
+    private String profilehead;
+    private String profile;
+    private Timestamp registertime;
+    private Timestamp lastlogintime;
+    private boolean status;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -92,5 +101,85 @@ public class User {
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "nickname", nullable = true, length = 255)
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    @Basic
+    @Column(name = "sex", nullable = true, length = 255)
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    @Basic
+    @Column(name = "age", nullable = true)
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    @Basic
+    @Column(name = "profilehead", nullable = true, length = 255)
+    public String getProfilehead() {
+        return profilehead;
+    }
+
+    public void setProfilehead(String profilehead) {
+        this.profilehead = profilehead;
+    }
+
+    @Basic
+    @Column(name = "profile", nullable = true, length = 255)
+    public String getProfile() {
+        return profile;
+    }
+
+    public void setProfile(String profile) {
+        this.profile = profile;
+    }
+
+    @Basic
+    @Column(name = "registertime", nullable = false)
+    public Timestamp getRegistertime() {
+        return registertime;
+    }
+
+    public void setRegistertime(Timestamp registertime) {
+        this.registertime = registertime;
+    }
+
+    @Basic
+    @Column(name = "lastlogintime", nullable = false)
+    public Timestamp getLastlogintime() {
+        return lastlogintime;
+    }
+
+    public void setLastlogintime(Timestamp lastlogintime) {
+        this.lastlogintime = lastlogintime;
+    }
+
+    @Basic
+    @Column(name = "status", nullable = false)
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }

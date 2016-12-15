@@ -3,6 +3,7 @@ package base.controller;
 import base.model.User;
 import base.service.LogService;
 import base.service.UserService;
+import org.springframework.web.multipart.MultipartFile;
 import utils.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -92,6 +93,14 @@ public class UserController {
      * 头像上传
      *
      */
+    @RequestMapping(value = "{userid}/upload")
+    public String upload(@PathVariable("userid") int userid, MultipartFile file,HttpServletRequest request,UploadUtil uploadUtil,RedirectAttributes attributes,NetUtil netUtil,LogUtil logUtil,CommonDate date,WordDefined defined){
+        try {
+            String fileurl = uploadUtil.upload(request,"uplaod",userid);
+            user = userService.selectUserByUserid(userid);
+
+        }
+    }
 
 
 }

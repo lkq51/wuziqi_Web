@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="base.model.User" table="user" schema="wuziqi">
+		<id name="id">
+			<column name="id" sql-type="int(255)"/>
+		</id>
+		<property name="admin">
+			<column name="admin" sql-type="bit(1)"/>
+		</property>
+		<property name="username">
+			<column name="username" sql-type="varchar(255)"/>
+		</property>
+		<property name="password">
+			<column name="password" sql-type="varchar(255)"/>
+		</property>
+		<property name="email">
+			<column name="email" sql-type="varchar(255)" not-null="true"/>
+		</property>
+		<property name="nickname">
+			<column name="nickname" sql-type="varchar(255)" not-null="true"/>
+		</property>
+		<property name="sex">
+			<column name="sex" sql-type="varchar(255)" not-null="true"/>
+		</property>
+		<property name="age">
+			<column name="age" sql-type="int(11)" not-null="true"/>
+		</property>
+		<property name="profilehead">
+			<column name="profilehead" sql-type="varchar(255)" not-null="true"/>
+		</property>
+		<property name="profile">
+			<column name="profile" sql-type="varchar(255)" not-null="true"/>
+		</property>
+		<property name="registertime">
+			<column name="registertime" sql-type="datetime"/>
+		</property>
+		<property name="lastlogintime">
+			<column name="lastlogintime" sql-type="datetime"/>
+		</property>
+		<property name="status">
+			<column name="status" sql-type="bit(1)"/>
+		</property>
+	</class>
+</hibernate-mapping>
