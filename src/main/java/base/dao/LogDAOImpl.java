@@ -12,29 +12,35 @@ public class LogDAOImpl  extends BaseDAOImpl implements LogDAO{
 
     @Override
     public List<Log> selectAll(int start, int end) {
-        String hql = "from Log (select A,Rownum RN from (from Log Order by Desc) as A) where RN between :start and :end";
+        /*String hql = "from Log (select A,Rownum RN from (from Log Order by Desc) as A) where RN between :start and :end";*/
+        String hql ="from Log ";
         return (List<Log>)  this.getHibernateTemplate().find(hql);
     }
 
     @Override
     public List<Log> selectLogByUserid(int userid, int start, int end)
     {
-        String hql = "from Log where Log.userid = :userid";
+        String hql = "from Log log where log.userid = :userid";
         return (List<Log>) this.getHibernateTemplate().find(hql);
     }
-
+    //有问题
     @Override
-    public Log selectCount() {
-        return null;
+    public Log selectCount()
+    {
+        String hql = "select count(*) from Log";
+        return (Log) this.getHibernateTemplate().find(hql);
     }
-
+    //有问题
     @Override
     public Log selectCountByUserid(int userid) {
-        return null;
+        String hql = "select count(*) from Log where Log.userid=:userid";
+        return (Log) this.getHibernateTemplate().find(hql);
     }
 
     @Override
-    public boolean insert(Log log) {
+    public boolean insert(Log log)
+    {
+        this.getHibernateTemplate().save(log);
         return false;
     }
 
@@ -46,12 +52,17 @@ public class LogDAOImpl  extends BaseDAOImpl implements LogDAO{
 
     @Override
     public boolean deleteThisUser(int userid) {
-        String hql ="";
+        String hql ="from Log where Log .userid = :userid";
+        List<Log> logs =(List<Log>) this.getHibernateTemplate().find(hql);
+        this.getHibernateTemplate().deleteAll(logs);
         return false;
     }
 
     @Override
     public boolean deleteAll() {
+        String hql = "from Log";
+        List<Log> logs=(List<Log>) this.getHibernateTemplate().find(hql);
+        this.getHibernateTemplate().deleteAll(logs);
         return false;
     }
 }

@@ -25,12 +25,12 @@
 			<property name="dataSource" ref="dataSource"></property>
 			<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
 			<!--注解扫描包-->
-			<property name="annotatedClasses">
+<!--			<property name="annotatedClasses">
 				<list>
 					<value>base.model.Log</value>
 					<value>base.model.User</value>
 				</list>
-			</property>
+			</property>-->
 		</bean>
 		<!--定义数据源-->
 		<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">

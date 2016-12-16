@@ -32,6 +32,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User selectUserByUserName(String username) {
+        return null;
+    }
+
+    @Override
     public int selectCount(int pageSize) {
         int pageCount = userDAO.selectCount().getId();
         return pageCount % pageSize == 0 ? pageCount/pageSize:pageCount/pageSize + 1;

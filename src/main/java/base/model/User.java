@@ -23,8 +23,8 @@ public class User {
     private Integer age;
     private String profilehead;
     private String profile;
-    private Timestamp registertime;
-    private Timestamp lastlogintime;
+    private String registertime;
+    private String lastlogintime;
     private boolean status;
 
     @Id
@@ -155,21 +155,21 @@ public class User {
 
     @Basic
     @Column(name = "registertime", nullable = false)
-    public Timestamp getRegistertime() {
+    public String getRegistertime() {
         return registertime;
     }
 
-    public void setRegistertime(Timestamp registertime) {
+    public void setRegistertime(String registertime) {
         this.registertime = registertime;
     }
 
     @Basic
     @Column(name = "lastlogintime", nullable = false)
-    public Timestamp getLastlogintime() {
+    public String getLastlogintime() {
         return lastlogintime;
     }
 
-    public void setLastlogintime(Timestamp lastlogintime) {
+    public void setLastlogintime(String lastlogintime) {
         this.lastlogintime = lastlogintime;
     }
 

@@ -11,7 +11,7 @@ import java.io.IOException;
  * Created by lkq on 2016/12/13.
  */
 public class LoginFilter extends OncePerRequestFilter {
-    private static final String LOGIN_URL = "/jsp/login";
+    private static final String LOGIN_URL = "/login";
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         String[] notFilter = new String[]{"login","login.jsp","user/logout","user/login"};   //不过滤的URL

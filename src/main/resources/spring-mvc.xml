@@ -43,7 +43,7 @@
 			<mvc:exclude-mapping path="/login.jsp"/>
 			<mvc:exclude-mapping path="/common/**"/>
 			<mvc:exclude-mapping path="/plugins/**"/>
-			<mvc:exclude-mapping path="/staitic/**"/>
+			<mvc:exclude-mapping path="/static/**"/>
 			<mvc:exclude-mapping path="/upload/**"/>
 			<bean id="loginInterceptor" class="base.interceptor.LoginInterceptor"></bean>
 		</mvc:interceptor>
