@@ -10,7 +10,6 @@ import javax.servlet.http.Part;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import static org.apache.struts2.ServletActionContext.getServletContext;
 
 /**
  * Created by lkq on 2016/11/18.

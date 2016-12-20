@@ -34,7 +34,7 @@ public class UserController {
      */
     @RequestMapping(value = "chat")
     public ModelAndView getIndex(){
-        ModelAndView view = new ModelAndView("apps/index");
+        ModelAndView view = new ModelAndView("jsp/chat");
         return view;
     }
 
@@ -46,7 +46,7 @@ public class UserController {
     */
     @RequestMapping(value = "{userid}",method = RequestMethod.GET)
     public ModelAndView selectUserByUserid(@PathVariable("userid")int userid, @ModelAttribute("userid")String sessionid){
-        ModelAndView view =new ModelAndView("apps/information");
+        ModelAndView view =new ModelAndView("jsp/information");
         user = userService.selectUserByUserid(userid);
         view.addObject("user",user);
         return view;
@@ -104,7 +104,7 @@ public class UserController {
     @RequestMapping(value = "{userid}/upload")
     public String upload(@PathVariable("userid") int userid, String username,MultipartFile file,HttpServletRequest request,UploadUtil uploadUtil,RedirectAttributes attributes,NetUtil netUtil,LogUtil logUtil,CommonDate date,WordDefined defined){
         try {
-            String fileurl = uploadUtil.upload(request,"uplaod",userid);
+            String fileurl = uploadUtil.upload(request,"upload",userid);
             user = userService.selectUserByUserid(userid);
             user.setProfilehead(fileurl);
             boolean flag = userService.update(user);

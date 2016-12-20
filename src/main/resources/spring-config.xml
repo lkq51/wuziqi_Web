@@ -46,21 +46,22 @@
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 
-	<!--配置调度程序-->
+<!--
+	&lt;!&ndash;配置调度程序&ndash;&gt;
 	<bean id="jobBean" class="utils.MakeHtml"/>
 	<bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
 		<property name="targetObject" ref="jobBean"/>
 		<property name="targetMethod" value="execute"/>
 
-		<!--将并发设置为false-->
+		&lt;!&ndash;将并发设置为false&ndash;&gt;
 		<property name="concurrent" value="false"/>
  	</bean>
 	<bean id="trigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
 		<property name="jobDetail" ref="jobDetail"/>
-		<!--时间表达式-->
+		&lt;!&ndash;时间表达式&ndash;&gt;
 		<property name="cronExpression" value=""/>
 	</bean>
-	<!--总管理类如果将lazy-init =‘false’ 那么容器启动就会执行调度程序-->
+	&lt;!&ndash;总管理类如果将lazy-init =‘false’ 那么容器启动就会执行调度程序&ndash;&gt;
 	<bean id="startQuertz" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" lazy-init="false">
 		<property name="triggers">
 			<list>
@@ -68,6 +69,7 @@
 			</list>
 		</property>
 	</bean>
+-->
 
 	<!--配置事务管理器-->
 	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
