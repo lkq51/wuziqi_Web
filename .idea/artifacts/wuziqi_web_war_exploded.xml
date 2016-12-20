@@ -23,7 +23,6 @@
           <element id="library" level="project" name="Maven: net.sf.json-lib:json-lib:2.4" />
           <element id="library" level="project" name="Maven: javax.websocket:javax.websocket-api:1.0" />
           <element id="library" level="project" name="Maven: jstl:jstl:1.2" />
-          <element id="library" level="project" name="Maven: javax.servlet:javax.servlet-api:3.1.0" />
           <element id="library" level="project" name="aopalliance-1.0" />
           <element id="library" level="project" name="commons-logging-1.2" />
           <element id="library" level="project" name="Maven: org.slf4j:jcl-over-slf4j:1.7.21" />
