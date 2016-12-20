@@ -21,32 +21,58 @@
 	</context:component-scan>
 
 		<!--定义使用hibernate-->
-		<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-			<property name="dataSource" ref="dataSource"></property>
-			<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
-			<!--注解扫描包-->
-<!--			<property name="annotatedClasses">
-				<list>
-					<value>base.model.Log</value>
-					<value>base.model.User</value>
-				</list>
-			</property>-->
-		</bean>
-		<!--定义数据源-->
-		<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-			<property name="driverClass" value="com.mysql.jdbc.Driver"/>
-			<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/wuziqi"/>
-			<property name="user" value="root"/>
-			<property name="password" value="1994"/>
-		</bean>
-		<bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate">
-			<property name="sessionFactory" ref="sessionFactory"></property>
-		</bean>
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<!--<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>-->
+		<!--注解扫描包-->
+		<property name="annotatedClasses">
+			<list>
+				<value>base.model.Log</value>
+				<value>base.model.User</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+		<property name="location" value="classpath:jdbc.properties"/>
+	</bean>
+	<!--定义数据源-->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${driver}"/>
+		<property name="jdbcUrl" value="${url}"/>
+		<property name="user" value="${username}"/>
+		<property name="password" value="${password}"/>
+	</bean>
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
 
-		<!--配置事务管理器-->
-		<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-			<property name="sessionFactory" ref="sessionFactory"/>
-		</bean>
+	<!--配置调度程序-->
+	<bean id="jobBean" class="utils.MakeHtml"/>
+	<bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="jobBean"/>
+		<property name="targetMethod" value="execute"/>
+
+		<!--将并发设置为false-->
+		<property name="concurrent" value="false"/>
+ 	</bean>
+	<bean id="trigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail" ref="jobDetail"/>
+		<!--时间表达式-->
+		<property name="cronExpression" value=""/>
+	</bean>
+	<!--总管理类如果将lazy-init =‘false’ 那么容器启动就会执行调度程序-->
+	<bean id="startQuertz" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" lazy-init="false">
+		<property name="triggers">
+			<list>
+				<ref bean="trigger"/>
+			</list>
+		</property>
+	</bean>
+
+	<!--配置事务管理器-->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
 
 	<!--配置事务的传播特性-->
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
