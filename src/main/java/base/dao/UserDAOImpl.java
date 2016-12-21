@@ -37,7 +37,7 @@ public class UserDAOImpl extends BaseDAOImpl implements UserDAO {
 
     @Override
     public User selectUserByUserName(String username) {
-        String hql = "from User user where user.username = "+username;
+        String hql = "from User user where user.username = 'lkq'";
         ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
         HibernateTemplate hibernateTemplate = (HibernateTemplate) context.getBean("hibernateTemplate");
         List<User> users =(List<User>) hibernateTemplate.find(hql);

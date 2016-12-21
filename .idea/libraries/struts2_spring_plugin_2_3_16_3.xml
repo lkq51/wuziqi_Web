@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="struts2-spring-plugin-2.3.16.3">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/struts2-spring-plugin-2.3.16.3.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

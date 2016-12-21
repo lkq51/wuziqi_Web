@@ -17,10 +17,10 @@ public class UploadUtil {
      * 返回处理过的path+fileName
      * @param request
      * @param folder
-     * @param userid
+     * @param username
      * @return
      */
-    public String upload(HttpServletRequest request,String folder,int userid){
+    public String upload(HttpServletRequest request,String folder,String username){
         FileUtil fileUtil = new FileUtil();
         String file_url = "";
         //创建一个通用的多部分解析器
@@ -42,16 +42,16 @@ public class UploadUtil {
                     if (myFileName.trim()!=""){
                         System.out.println(myFileName);
                         //重命名上传后的文件名
-                        String fileName = userid + "." +prefix;
+                        String fileName = username + "." +prefix;
                         //定义上传路径,格式为 upload/base/hello.jpg
-                        String path = request.getServletContext().getRealPath("/")+folder+"/"+userid;
+                        String path = request.getServletContext().getRealPath("/")+folder+"/"+username;
                         File localFile = new File(path, fileName);
                         if (!localFile.exists()){
                             localFile.mkdirs();
                         }
                         try {
                             file.transferTo(localFile);
-                            file_url = folder + "/" + userid + "/" +fileName;
+                            file_url = folder + "/" + username + "/" +fileName;
                         }catch (IOException e){
                             e.printStackTrace();
                         }

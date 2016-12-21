@@ -8,9 +8,7 @@
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Hibernate 4.2.2-4.2.2" />
-          <element id="library" level="project" name="Struts 2-2.3.20.1" />
           <element id="library" level="project" name="mysql-connector-java-5.1.38" />
-          <element id="library" level="project" name="struts2-spring-plugin-2.3.16.3" />
           <element id="library" level="project" name="aspectjweaver" />
           <element id="library" level="project" name="Maven: log4j:log4j:1.2.16" />
           <element id="library" level="project" name="Maven: c3p0:c3p0:0.9.1" />
@@ -22,12 +20,8 @@
           <element id="library" level="project" name="Maven: net.sf.ezmorph:ezmorph:1.0.6" />
           <element id="library" level="project" name="Maven: net.sf.json-lib:json-lib:2.4" />
           <element id="library" level="project" name="Maven: javax.websocket:javax.websocket-api:1.0" />
-          <element id="library" level="project" name="Maven: jstl:jstl:1.2" />
           <element id="library" level="project" name="aopalliance-1.0" />
           <element id="library" level="project" name="commons-logging-1.2" />
-          <element id="library" level="project" name="Maven: org.slf4j:jcl-over-slf4j:1.7.21" />
-          <element id="library" level="project" name="Maven: org.slf4j:jul-to-slf4j:1.7.21" />
-          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.21" />
           <element id="library" level="project" name="Maven: org.springframework.data:spring-data-commons-core:1.4.1.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.3.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-beans:4.3.4.RELEASE" />
@@ -45,11 +39,14 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.3.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-websocket:4.3.4.RELEASE" />
           <element id="library" level="project" name="quartz-1.7.3" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-webmvc-portlet:3.1.2.RELEASE" />
           <element id="library" level="project" name="jackson-core-asl-1.9.13" />
           <element id="library" level="project" name="jackson-annotations-2.2.3" />
           <element id="library" level="project" name="jackson-databind-2.2.3" />
           <element id="library" level="project" name="fastjson-1.2.7" />
+          <element id="library" level="project" name="jul-to-slf4j-1.7.21" />
+          <element id="library" level="project" name="javax.servlet-api-3.1.0" />
+          <element id="library" level="project" name="commons-fileupload" />
+          <element id="library" level="project" name="commons-io" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="wuziqi_web/web/Web" />

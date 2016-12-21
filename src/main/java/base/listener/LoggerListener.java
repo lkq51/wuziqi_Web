@@ -1,7 +1,8 @@
 package base.listener;
 
-import org.springframework.web.util.Log4jConfigListener;
 import org.slf4j.bridge.SLF4JBridgeHandler;
+import org.springframework.web.util.Log4jConfigListener;
+
 import javax.servlet.ServletContextEvent;
 
 /**
