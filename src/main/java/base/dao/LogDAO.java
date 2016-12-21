@@ -12,9 +12,9 @@ import java.util.List;
  */
 public interface LogDAO {
     List<Log> selectAll(int start, int end);
-    List<Log> selectLogByUserid(int userid, int start, int end);
+    List<Log> selectLogByUserName(String username, int start, int end);
     Log selectCount();
-    Log selectCountByUserid(int userid);
+    Log selectLogByUserName(String username);
     boolean save(Log log);
     boolean delete(int id);
     boolean deleteThisUser(int userid);

@@ -21,9 +21,9 @@ public class LogDAOImpl  extends BaseDAOImpl implements LogDAO{
     }
 
     @Override
-    public List<Log> selectLogByUserid(int userid, int start, int end)
+    public List<Log> selectLogByUserName(String username, int start, int end)
     {
-        String hql = "from Log log where log.userid = "+userid;
+        String hql = "from Log log where log.username = "+username;
         return (List<Log>) this.getHibernateTemplate().find(hql);
     }
     //有问题
@@ -35,8 +35,8 @@ public class LogDAOImpl  extends BaseDAOImpl implements LogDAO{
     }
     //有问题
     @Override
-    public Log selectCountByUserid(int userid) {
-        String hql = "select count(*) from Log where Log.userid= "+userid;
+    public Log selectLogByUserName(String username) {
+        String hql = "select count(*) from Log where Log.username= "+username;
         return (Log) this.getHibernateTemplate().find(hql);
     }
 

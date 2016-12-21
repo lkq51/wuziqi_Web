@@ -9,9 +9,9 @@ import java.util.List;
  */
 public interface LogService {
     List<Log> selectAll(int page, int pageSize);
-    List<Log> selectLogByUserid(int userid, int page, int pageSize);
+    List<Log> selectLogByUserName(String username, int page, int pageSize);
     int selectCount(int pageSize);
-    int selecrCountByUserid(int userid, int pageSize);
+    int selectLogByUserName(String username, int pageSize);
     boolean save(Log log);
     boolean delete(int id);
     boolean deleteThisUser(int id);

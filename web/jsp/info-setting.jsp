@@ -31,11 +31,11 @@
         <div class="am-tabs-bd">
             <div class="am-tab-panel am-fade am-in am-active" id="tab1">
                 <c:set value="${user}" var="user"/>
-                <form class="am-form am-form-horizontal" id="information-form" ction="${ctx}/${userid}/update" method="post" data-am-validator>
+                <form class="am-form am-form-horizontal" id="information-form" ction="${ctx}/${username}/update" method="post" data-am-validator>
                     <div class="am-form-group">
                         <label for="userid" class="am-u-sm-2 am-form-label">用户名</label>
                         <div class="am-u-sm-10">
-                            <input type="text" id="userid" name="userid" value="${user.userid}" disabled>
+                            <input type="text" id="userid" name="userid" value="${user.username}" disabled>
                         </div>
                     </div>
 
@@ -84,9 +84,9 @@
             </div>
 
             <div class="am-tab-panel am-fade" id="tab2">
-                <form class="am-form am-form-horizontal" action="${ctx}/${userid}/upload" enctype="multipart/form-data" method="post" onsubmit="return checkFileType();" style="text-align: center;">
+                <form class="am-form am-form-horizontal" action="${ctx}/${username}/upload" enctype="multipart/form-data" method="post" onsubmit="return checkFileType();" style="text-align: center;">
                     <div style="text-align: center;margin-bottom: 10px">
-                        <img class="am-circle" src="${ctx}/${user.profilehead}" width="140" height="140" alt="Amayadream"/>
+                        <img class="am-circle" src="${ctx}/${user.profilehead}" width="140" height="140" alt="lkq"/>
                     </div>
                     <div class="am-form-group am-form-file">
                         <button type="button" class="am-btn am-btn-secondary am-btn-sm">
@@ -110,7 +110,7 @@
             </div>
 
             <div class="am-tab-panel am-fade" id="tab3">
-                <form class="am-form am-form-horizontal" data-am-validator action="${ctx}/${userid}/pass" method="post">
+                <form class="am-form am-form-horizontal" data-am-validator action="${ctx}/${username}/pass" method="post">
                     <div class="am-form-group">
                         <label for="password1" class="am-u-sm-2 am-form-label">原密码</label>
                         <div class="am-u-sm-10">

@@ -56,9 +56,9 @@
                             </c:if>
                         </div>
                         <div class="am-u-md-3"><b>注册时间</b></div>
-                        <div class="am-u-md-3">${user.firsttime}</div>
+                        <div class="am-u-md-3">${user.registertime}</div>
                         <div class="am-u-md-3"><b>最后登录</b></div>
-                        <div class="am-u-md-3">${user.lasttime}</div>
+                        <div class="am-u-md-3">${user.lastlogintime}</div>
                     </div>
                 </div>
             </div>
