@@ -12,7 +12,7 @@ public interface UserService {
     User selectUserByUserid(int userid);
     User selectUserByUserName(String username);
     int selectCount(int pageSize);
-    boolean insert(User user);
+    boolean save(User user);
     boolean update(User user);
     boolean delete(int userid);
 

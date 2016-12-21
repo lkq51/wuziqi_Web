@@ -1,6 +1,9 @@
 package base.dao;
 
 import base.model.Log;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
@@ -20,7 +23,7 @@ public class LogDAOImpl  extends BaseDAOImpl implements LogDAO{
     @Override
     public List<Log> selectLogByUserid(int userid, int start, int end)
     {
-        String hql = "from Log log where log.userid = :userid";
+        String hql = "from Log log where log.userid = "+userid;
         return (List<Log>) this.getHibernateTemplate().find(hql);
     }
     //有问题
@@ -33,14 +36,16 @@ public class LogDAOImpl  extends BaseDAOImpl implements LogDAO{
     //有问题
     @Override
     public Log selectCountByUserid(int userid) {
-        String hql = "select count(*) from Log where Log.userid=:userid";
+        String hql = "select count(*) from Log where Log.userid= "+userid;
         return (Log) this.getHibernateTemplate().find(hql);
     }
 
     @Override
-    public boolean insert(Log log)
+    public boolean save(Log log)
     {
-        this.getHibernateTemplate().save(log);
+        ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
+        HibernateTemplate hibernateTemplate = (HibernateTemplate) context.getBean("hibernateTemplate");
+        hibernateTemplate.save(log);
         return false;
     }
 

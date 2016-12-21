@@ -15,7 +15,7 @@ public interface LogDAO {
     List<Log> selectLogByUserid(int userid, int start, int end);
     Log selectCount();
     Log selectCountByUserid(int userid);
-    boolean insert(Log log);
+    boolean save(Log log);
     boolean delete(int id);
     boolean deleteThisUser(int userid);
     boolean deleteAll();

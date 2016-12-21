@@ -52,8 +52,8 @@ public class LogServiceImpl implements LogService {
     }
 
     @Override
-    public boolean insert(Log log) {
-        return logDAO.insert(log);
+    public boolean save(Log log) {
+        return logDAO.save(log);
     }
 
     @Override

@@ -7,6 +7,7 @@ import base.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import utils.CommonDate;
 import utils.LogUtil;
@@ -29,8 +30,8 @@ public class LoginController {
     @Resource private LogService logService;
 
     @RequestMapping(value = "login",method = RequestMethod.POST)
-    public String login(String username, String password, HttpSession session, RedirectAttributes attributes, WordDefined defined, CommonDate date, LogUtil logUtil, NetUtil netUtil, HttpServletRequest request){
-        user = userService.selectUserByUserName(username);
+    public String login(@RequestParam("userName") String userName,@RequestParam("password") String password, HttpSession session, RedirectAttributes attributes, WordDefined defined, CommonDate date, LogUtil logUtil, NetUtil netUtil, HttpServletRequest request){
+        user = userService.selectUserByUserName(userName);
         if (user == null){
             attributes.addFlashAttribute("error",defined.LOGIN_USERID_ERROR);
             return "redirect:/login";
@@ -43,8 +44,9 @@ public class LoginController {
                     attributes.addFlashAttribute("error",defined.LOGIN_USERID_DISABLED);
                     return "redirect:/login";
                 }else {
-                    logService.insert(logUtil.setLog(user.getId(),username,date.getTime24(),defined.LOG_TYPE_LOGIN,defined.LOG_DETAIL_USER_LOGIN,netUtil.getIpAddress(request)));
-                    session.setAttribute("username",username);
+                    logService.save(logUtil.setLog(user.getId(),userName,date.getTime24(),defined.LOG_TYPE_LOGIN,defined.LOG_DETAIL_USER_LOGIN,netUtil.getIpAddress(request)));
+                    session.setAttribute("userid",user.getId());
+                    session.setAttribute("username",userName);
                     session.setAttribute("login_status",true);
                     user.setLastlogintime(date.getTime24());
                     userService.update(user);

@@ -12,7 +12,7 @@ public interface LogService {
     List<Log> selectLogByUserid(int userid, int page, int pageSize);
     int selectCount(int pageSize);
     int selecrCountByUserid(int userid, int pageSize);
-    boolean insert(Log log);
+    boolean save(Log log);
     boolean delete(int id);
     boolean deleteThisUser(int id);
     boolean deleteAll();

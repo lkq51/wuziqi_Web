@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User selectUserByUserName(String username) {
-        return null;
+        return userDAO.selectUserByUserName(username);
     }
 
     @Override
@@ -43,8 +43,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean insert(User user) {
-        return userDAO.insert(user);
+    public boolean save(User user) {
+        return userDAO.save(user);
     }
 
     @Override

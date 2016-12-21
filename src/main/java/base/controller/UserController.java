@@ -63,7 +63,7 @@ public class UserController {
     public String update(@PathVariable("userid") int userid, @ModelAttribute("username") String username,@ModelAttribute("userid") String sessionid, User user, RedirectAttributes attributes, NetUtil netUil, LogUtil logUtil, CommonDate date, WordDefined defined, HttpServletRequest request){
         boolean flag = userService.update(user);
         if (flag){
-            logService.insert(logUtil.setLog(userid,username,date.getTime24(),defined.LOG_TYPE_UPDATE,defined.LOG_DETAIL_UPDATE_PROFILE,netUil.getIpAddress(request)));
+            logService.save(logUtil.setLog(userid,username,date.getTime24(),defined.LOG_TYPE_UPDATE,defined.LOG_DETAIL_UPDATE_PROFILE,netUil.getIpAddress(request)));
             attributes.addFlashAttribute("message","["+userid+"]资料更新成功!");
         }else {
             attributes.addFlashAttribute("error","["+userid+"]资料更新失败!");
@@ -84,7 +84,7 @@ public class UserController {
             user.setPassword(newpass);
             boolean flag = userService.update(user);
             if (flag){
-                logService.insert(logUtil.setLog(userid,username,date.getTime24(),defined.LOG_TYPE_UPDATE,defined.LOG_DETAIL_UPDATE_PASSWORD,netUtil.getIpAddress(request)));
+                logService.save(logUtil.setLog(userid,username,date.getTime24(),defined.LOG_TYPE_UPDATE,defined.LOG_DETAIL_UPDATE_PASSWORD,netUtil.getIpAddress(request)));
                 attributes.addFlashAttribute("message","["+userid+"]密码更新成功!");
             }else {
                 attributes.addFlashAttribute("error","["+userid+"]密码更新失败!");
@@ -109,7 +109,7 @@ public class UserController {
             user.setProfilehead(fileurl);
             boolean flag = userService.update(user);
             if (flag){
-                logService.insert(logUtil.setLog(userid,username,date.getTime24(),defined.LOG_TYPE_UPDATE,defined.LOG_DETAIL_UPDATE_PROFILEHEAD,netUtil.getIpAddress(request)));
+                logService.save(logUtil.setLog(userid,username,date.getTime24(),defined.LOG_TYPE_UPDATE,defined.LOG_DETAIL_UPDATE_PROFILEHEAD,netUtil.getIpAddress(request)));
                 attributes.addFlashAttribute("message","["+userid+"]头像更新成功!");
             }
         }catch (Exception e){

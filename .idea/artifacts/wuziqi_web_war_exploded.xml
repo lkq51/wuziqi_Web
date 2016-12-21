@@ -49,6 +49,7 @@
           <element id="library" level="project" name="jackson-core-asl-1.9.13" />
           <element id="library" level="project" name="jackson-annotations-2.2.3" />
           <element id="library" level="project" name="jackson-databind-2.2.3" />
+          <element id="library" level="project" name="fastjson-1.2.7" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="wuziqi_web/web/Web" />

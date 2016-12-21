@@ -3,6 +3,7 @@ package base.dao;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 
 import org.apache.log4j.Logger;
+import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -10,7 +11,8 @@ import java.util.List;
 
 /**
  * Created by lkq on 2016/10/12.
- */
+ *//*
+@Repository(value = "BaseDAO")*/
 public class BaseDAOImpl implements BaseDAO {
     private HibernateTemplate hibernateTemplate;
 
@@ -22,6 +24,8 @@ public class BaseDAOImpl implements BaseDAO {
     public void setHibernateTemplate(HibernateTemplate hibernateTemplate){
         this.hibernateTemplate=hibernateTemplate;
     }
+    protected void initDao(){}
+    public BaseDAOImpl(){}
 
     public <T> void saveEntity(T entity) {
         this.hibernateTemplate.saveOrUpdate(entity);

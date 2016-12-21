@@ -15,23 +15,10 @@
 	   http://www.springframework.org/schema/tx/spring-tx.xsd
 	   http://www.springframework.org/schema/aop
 	   http://www.springframework.org/schema/aop/spring-aop.xsd">
-		<context:annotation-config/>
+	<context:annotation-config/>
 	<context:component-scan base-package="base.*">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
-
-		<!--定义使用hibernate-->
-	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-		<property name="dataSource" ref="dataSource"></property>
-		<!--<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>-->
-		<!--注解扫描包-->
-		<property name="annotatedClasses">
-			<list>
-				<value>base.model.Log</value>
-				<value>base.model.User</value>
-			</list>
-		</property>
-	</bean>
 	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
 		<property name="location" value="classpath:jdbc.properties"/>
 	</bean>
@@ -42,10 +29,25 @@
 		<property name="user" value="${username}"/>
 		<property name="password" value="${password}"/>
 	</bean>
-	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate">
-		<property name="sessionFactory" ref="sessionFactory"></property>
+	<!--定义使用hibernate-->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+<!--		<property name="configLocation" value="classpath:hibernate.cfg.xml"/>-->
+		<!--注解扫描包-->
+			<property name="annotatedClasses">
+				<list>
+					<value>base.model.Log</value>
+					<value>base.model.User</value>
+				</list>
+			</property>
 	</bean>
-
+	<!--定义hibernateTemplate-->
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<bean id="BaseDAO" class="base.dao.BaseDAOImpl">
+		<property name="hibernateTemplate" ref="hibernateTemplate"/>
+	</bean>
 <!--
 	&lt;!&ndash;配置调度程序&ndash;&gt;
 	<bean id="jobBean" class="utils.MakeHtml"/>
@@ -86,7 +88,7 @@
                 这是默认值。
              -->
 			<tx:method name="create*" propagation="REQUIRED" />
-			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="save*" propagation="REQUIRED"/>
 			<tx:method name="add*" propagation="REQUIRED" />
 			<tx:method name="update*" propagation="REQUIRED" />
 			<tx:method name="remove*" propagation="REQUIRED" />
@@ -103,7 +105,7 @@
 
 	<!-- 定义切面，在 * base.service.*ServiceImpl.*(..) 中执行有关的hibernate session的事务操作 -->
 	<aop:config>
-		<aop:pointcut id="serviceOperation" expression="execution(* base.service.*ServiceImpl.*(..))" />
+		<aop:pointcut id="serviceOperation" expression="execution(* base.serviceImpl.*ServiceImpl.*(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceOperation" />
 	</aop:config>
 </beans>
