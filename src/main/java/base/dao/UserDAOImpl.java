@@ -51,9 +51,7 @@ public class UserDAOImpl extends BaseDAOImpl implements UserDAO {
     @Override
     public boolean update(User user)
     {
-        ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
-        HibernateTemplate hibernateTemplate = (HibernateTemplate) context.getBean("hibernateTemplate");
-        hibernateTemplate.update(user);
+        this.getHibernateTemplate().update(user);
         return true;
     }
 

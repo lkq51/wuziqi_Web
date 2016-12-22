@@ -11,10 +11,10 @@ import java.util.List;
  * Created by lou on 16/12/13.
  */
 public interface LogDAO {
-    List<Log> selectAll(int start, int end);
-    List<Log> selectLogByUserName(String username, int start, int end);
-    Log selectCount();
-    Log selectLogByUserName(String username);
+    List<Log> selectAll(int page, int pageSize);
+    List<Log> selectLogByUserName(String username, int page, int pageSize);
+    int selectCount();
+    int selectLogByUserName(String username);
     boolean save(Log log);
     boolean delete(int id);
     boolean deleteThisUser(int userid);

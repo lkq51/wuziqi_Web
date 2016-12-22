@@ -1,6 +1,7 @@
 package base.dao;
 
 import base.model.Log;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
@@ -11,59 +12,85 @@ import java.util.List;
 public class LogDAOImpl  extends BaseDAOImpl implements LogDAO{
 
     @Override
-    public List<Log> selectAll(int start, int end) {
-      /*  String hql = "from Log";
-        getByPage(hql,end-start+1,)
-        return (List<Log>) ;*/
+    public List<Log> selectAll(int page, int pageSize) {
+      String hql = "from Log";
+      int real = selectCount();
+      List<Log> logs = getByPage(hql,page,pageSize,real);
+      return logs;
     }
 
     @Override
-    public List<Log> selectLogByUserName(String username, int start, int end)
+    public List<Log> selectLogByUserName(String username, int page, int pageSize)
     {
-        String hql = "from Log log where log.username = ?";
-        return (List<Log>) this.getHibernateTemplate().find(hql,username);
+        String hql = "from Log log where log.username = 'lkq'";
+        List<Log> logs = getByPage(hql,page,pageSize,realPage(hql));
+        return logs;
     }
-    
-    //有问题
+
+    /**
+     * @return 返回记录行数
+     */
     @Override
-    public Log selectCount()
+    public int selectCount()
     {
-        String hql = "select count(*) from Log";
-        return (Log) this.getHibernateTemplate().find(hql);
+        String hql = "from Log";
+        return  realPage(hql);
     }
-    //有问题
+
+    /**
+     * @param username
+     * @return
+     */
     @Override
-    public Log selectLogByUserName(String username) {
-        String hql = "from Log where Log.username= ?";
-        return (Log) this.getHibernateTemplate().find(hql,username);
+    public int selectLogByUserName(String username) {
+        String hql = "from Log log where log.username = 'lkq'";
+        return realPage(hql);
     }
 
     @Override
     public boolean save(Log log)
     {
-        this.getHibernateTemplate().save(log);
+        try {
+            this.getHibernateTemplate().save(log);
+        }catch (DataAccessException e){
+            return false;
+        }
         return true;
     }
 
     @Override
     public boolean delete(int id) {
-        this.getHibernateTemplate().findByCriteria()
-        return false;
+        String hql = "from Log where Log.id = ?";
+        try {
+            List<Log> logs=(List<Log>) this.getHibernateTemplate().find(hql,id);
+            this.getHibernateTemplate().delete(logs.get(0));
+        }catch (DataAccessException e){
+            return false;
+        }
+        return true;
     }
 
     @Override
     public boolean deleteThisUser(int userid) {
         String hql ="from Log where Log .userid = ?";
-        List<Log> logs =(List<Log>) this.getHibernateTemplate().find(hql,userid);
-        this.getHibernateTemplate().deleteAll(logs);
-        return false;
+       try {
+           List<Log> logs =(List<Log>) this.getHibernateTemplate().find(hql,userid);
+           this.getHibernateTemplate().deleteAll(logs);
+       }catch (DataAccessException e){
+           return false;
+       }
+        return true;
     }
 
     @Override
     public boolean deleteAll() {
         String hql = "from Log";
-        List<Log> logs=(List<Log>) this.getHibernateTemplate().find(hql);
-        this.getHibernateTemplate().deleteAll(logs);
-        return false;
+        try {
+            List<Log> logs=(List<Log>) this.getHibernateTemplate().find(hql);
+            this.getHibernateTemplate().deleteAll(logs);
+        }catch (DataAccessException e){
+            return false;
+        }
+        return true;
     }
 }
