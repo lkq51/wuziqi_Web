@@ -15,15 +15,15 @@
 	   http://www.springframework.org/schema/tx/spring-tx.xsd
 	   http://www.springframework.org/schema/aop
 	   http://www.springframework.org/schema/aop/spring-aop.xsd">
-	<context:annotation-config/>
-	<context:component-scan base-package="base.*">
+	<context:annotation-config />
+	<context:component-scan  base-package="base.*">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
 	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
 		<property name="location" value="classpath:jdbc.properties"/>
 	</bean>
 	<!--定义数据源-->
-	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
 		<property name="driverClass" value="${driver}"/>
 		<property name="jdbcUrl" value="${url}"/>
 		<property name="user" value="${username}"/>
@@ -34,19 +34,23 @@
 		<property name="dataSource" ref="dataSource"/>
 <!--		<property name="configLocation" value="classpath:hibernate.cfg.xml"/>-->
 		<!--注解扫描包-->
-			<property name="annotatedClasses">
-				<list>
-					<value>base.model.Log</value>
-					<value>base.model.User</value>
-				</list>
-			</property>
+		<property name="packagesToScan" value="base.model"/>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<prop key="current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext</prop>
+				<prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext</prop>
+				<prop key="hibernate.cache.use_query_cache">false</prop>
+				<prop key="jdbc.use_scrollable_resultset">false</prop>
+			</props>
+		</property>
 	</bean>
 	<!--定义hibernateTemplate-->
 	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate">
 		<property name="sessionFactory" ref="sessionFactory"/>
-	</bean>
-	<bean id="BaseDAO" class="base.dao.BaseDAOImpl">
-		<property name="hibernateTemplate" ref="hibernateTemplate"/>
 	</bean>
 <!--
 	&lt;!&ndash;配置调度程序&ndash;&gt;
@@ -94,6 +98,13 @@
 			<tx:method name="remove*" propagation="REQUIRED" />
 			<tx:method name="del*" propagation="REQUIRED" />
 			<tx:method name="import*" propagation="REQUIRED" />
+			<!--hibernate4必须配置为开启事务 否则 getCurrentSession()获取不到-->
+			<tx:method name="get*" propagation="REQUIRED" read-only="true" />
+			<tx:method name="count*" propagation="REQUIRED" read-only="true" />
+			<tx:method name="find*" propagation="REQUIRED" read-only="true" />
+			<tx:method name="list*" propagation="REQUIRED" read-only="true" />
+			<tx:method name="update*" propagation="REQUIRED" read-only="false"/>
+			<tx:method name="*" propagation="REQUIRED" read-only="true" rollback-for="java.lang.Exception"/>
 			<!--
                 指定当前方法以非事务方式执行操作，如果当前存在事务，就把当前事务挂起，等我以非事务的状态运行完，再继续原来的事务。
                 查询定义即可

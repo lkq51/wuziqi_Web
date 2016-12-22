@@ -1,9 +1,6 @@
 package base.dao;
 
 import base.model.Log;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 import java.util.List;
 
@@ -15,17 +12,18 @@ public class LogDAOImpl  extends BaseDAOImpl implements LogDAO{
 
     @Override
     public List<Log> selectAll(int start, int end) {
-        /*String hql = "from Log (select A,Rownum RN from (from Log Order by Desc) as A) where RN between :start and :end";*/
-        String hql ="from Log ";
-        return (List<Log>)  this.getHibernateTemplate().find(hql);
+      /*  String hql = "from Log";
+        getByPage(hql,end-start+1,)
+        return (List<Log>) ;*/
     }
 
     @Override
     public List<Log> selectLogByUserName(String username, int start, int end)
     {
-        String hql = "from Log log where log.username = "+username;
-        return (List<Log>) this.getHibernateTemplate().find(hql);
+        String hql = "from Log log where log.username = ?";
+        return (List<Log>) this.getHibernateTemplate().find(hql,username);
     }
+    
     //有问题
     @Override
     public Log selectCount()
@@ -36,29 +34,27 @@ public class LogDAOImpl  extends BaseDAOImpl implements LogDAO{
     //有问题
     @Override
     public Log selectLogByUserName(String username) {
-        String hql = "select count(*) from Log where Log.username= "+username;
-        return (Log) this.getHibernateTemplate().find(hql);
+        String hql = "from Log where Log.username= ?";
+        return (Log) this.getHibernateTemplate().find(hql,username);
     }
 
     @Override
     public boolean save(Log log)
     {
-        ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
-        HibernateTemplate hibernateTemplate = (HibernateTemplate) context.getBean("hibernateTemplate");
-        hibernateTemplate.save(log);
-        return false;
+        this.getHibernateTemplate().save(log);
+        return true;
     }
 
     @Override
     public boolean delete(int id) {
-        deleteEmtityById(Log.class,String.valueOf(id));
+        this.getHibernateTemplate().findByCriteria()
         return false;
     }
 
     @Override
     public boolean deleteThisUser(int userid) {
-        String hql ="from Log where Log .userid = :userid";
-        List<Log> logs =(List<Log>) this.getHibernateTemplate().find(hql);
+        String hql ="from Log where Log .userid = ?";
+        List<Log> logs =(List<Log>) this.getHibernateTemplate().find(hql,userid);
         this.getHibernateTemplate().deleteAll(logs);
         return false;
     }

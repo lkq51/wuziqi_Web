@@ -5,7 +5,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -14,14 +13,6 @@ import java.util.List;
  */
 @Repository(value = "UserDAO")
 public class UserDAOImpl extends BaseDAOImpl implements UserDAO {
-    private  BaseDAO baseDAO;
-    public BaseDAO getBaseDAO() {
-        return baseDAO;
-    }
-
-    public void setBaseDAO(BaseDAO baseDAO) {
-        this.baseDAO = baseDAO;
-    }
     @Override
     public List<User> selectAll(int start,int end) {
         String hql = "from User ";
@@ -31,19 +22,15 @@ public class UserDAOImpl extends BaseDAOImpl implements UserDAO {
     @Override
     public User selectUserByUserid(int userid)
     {
-        String hql = "from User where User.id = "+userid;
-        return (User) this.getHibernateTemplate().find(hql);
+        String hql = "from User where User.id = ?";
+        return (User) this.getHibernateTemplate().find(hql,userid);
     }
 
     @Override
     public User selectUserByUserName(String username) {
-        String hql = "from User user where user.username = 'lkq'";
-        ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
-        HibernateTemplate hibernateTemplate = (HibernateTemplate) context.getBean("hibernateTemplate");
-        List<User> users =(List<User>) hibernateTemplate.find(hql);
-        User user= users.get(0);
-        /*List<User> users =(List<User>) this.getHibernateTemplate().find(hql);
-        User user = users.get(0);*/
+        String hql = "from User user where user.username = ?";
+        List<User> users =(List<User>) this.getHibernateTemplate().find(hql,username);
+        User user = users.get(0);
         return user;
     }
 

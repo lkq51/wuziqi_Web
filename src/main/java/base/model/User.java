@@ -48,7 +48,7 @@ public class User {
     }
 
     @Basic
-    @Column(name = "username", nullable = false, length = 255)
+    @Column(name = "username", nullable = true, length = 255)
     public String getUsername() {
         return username;
     }
@@ -58,7 +58,7 @@ public class User {
     }
 
     @Basic
-    @Column(name = "password", nullable = false, length = 255)
+    @Column(name = "password", nullable = true, length = 255)
     public String getPassword() {
         return password;
     }
@@ -154,7 +154,7 @@ public class User {
     }
 
     @Basic
-    @Column(name = "registertime", nullable = false)
+    @Column(name = "registertime", nullable = true)
     public String getRegistertime() {
         return registertime;
     }
@@ -164,7 +164,7 @@ public class User {
     }
 
     @Basic
-    @Column(name = "lastlogintime", nullable = false)
+    @Column(name = "lastlogintime", nullable = true)
     public String getLastlogintime() {
         return lastlogintime;
     }

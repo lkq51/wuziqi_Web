@@ -47,6 +47,10 @@
           <element id="library" level="project" name="javax.servlet-api-3.1.0" />
           <element id="library" level="project" name="commons-fileupload" />
           <element id="library" level="project" name="commons-io" />
+          <element id="library" level="project" name="Maven: org.slf4j:jul-to-slf4j:1.7.21" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.21" />
+          <element id="library" level="project" name="Maven: org.slf4j:jcl-over-slf4j:1.7.21" />
+          <element id="library" level="project" name="Maven: jstl:jstl:1.2" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="wuziqi_web/web/Web" />

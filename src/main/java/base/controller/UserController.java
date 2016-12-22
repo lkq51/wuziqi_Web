@@ -14,6 +14,7 @@ import javax.annotation.Resource;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -46,12 +47,25 @@ public class UserController {
     */
     @RequestMapping(value = "{username}",method = RequestMethod.GET)
     public ModelAndView selectUserByusername(@PathVariable("username")String username, @ModelAttribute("username")String sessionid){
+
         ModelAndView view =new ModelAndView("jsp/information");
         user = userService.selectUserByUserName(username);
         view.addObject("user",user);
         return view;
     }
-
+    /**
+     * 显示个人信息编辑页面
+     * @param username
+     * @param sessionid
+     * @return
+     */
+    @RequestMapping(value = "{username}/config")
+    public ModelAndView setting(@PathVariable("username") String username, @ModelAttribute("username") String sessionid){
+        ModelAndView view = new ModelAndView("jsp/info-setting");
+        user = userService.selectUserByUserName(username);
+        view.addObject("user", user);
+        return view;
+    }
     /**
     * 更新用户信息
     * @param username
@@ -61,6 +75,7 @@ public class UserController {
     */
     @RequestMapping(value = "{username}/update",method = RequestMethod.POST)
     public String update(@PathVariable("username") String username,@ModelAttribute("username") String sessionid, User user, RedirectAttributes attributes, NetUtil netUil, LogUtil logUtil, CommonDate date, WordDefined defined, HttpServletRequest request){
+        System.out.println(user.getAge()+user.getUsername()+user.getNickname());
         boolean flag = userService.update(user);
         if (flag){
             logService.save(logUtil.setLog(user.getId(),username,date.getTime24(),defined.LOG_TYPE_UPDATE,defined.LOG_DETAIL_UPDATE_PROFILE,netUil.getIpAddress(request)));

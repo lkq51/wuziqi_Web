@@ -1,36 +1,60 @@
 package base.dao;
 
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.dao.support.DaoSupport;
 import org.springframework.orm.hibernate4.HibernateTemplate;
-
 import org.apache.log4j.Logger;
-import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
-
+import org.springframework.stereotype.Repository;
+import javax.annotation.Resource;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by lkq on 2016/10/12.
- *//*
-@Repository(value = "BaseDAO")*/
-public class BaseDAOImpl implements BaseDAO {
-    private HibernateTemplate hibernateTemplate;
-
+ */
+@Repository(value = "BaseDAO")
+public class BaseDAOImpl extends DaoSupport implements BaseDAO {
     protected Logger logger=Logger.getLogger(this.getClass());
-
-    public HibernateTemplate getHibernateTemplate(){
-        return hibernateTemplate;
+    private SessionFactory sessionFactory;
+    private HibernateTemplate hibernateTemplate;
+    public SessionFactory getSessionFactory(){
+        return sessionFactory;
     }
-    public void setHibernateTemplate(HibernateTemplate hibernateTemplate){
+    public final void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
         this.hibernateTemplate=hibernateTemplate;
     }
-    protected void initDao(){}
-    public BaseDAOImpl(){}
+
+    public final HibernateTemplate getHibernateTemplate() {
+        return this.hibernateTemplate;
+    }
+    @Resource(name = "sessionFactory")
+    public void setSessionFactory(SessionFactory sessionFactory){
+        this.sessionFactory = sessionFactory;
+        this.hibernateTemplate = createHibernateTemplate(sessionFactory);
+    }
+    public Session getSession(){
+        if (this.sessionFactory == null){
+            throw  new HibernateException("Session Create Fail,SessionFactory is null");
+        }
+        return this.sessionFactory.getCurrentSession();
+    }
+    protected HibernateTemplate createHibernateTemplate(SessionFactory sessionFactory){
+        return new HibernateTemplate(sessionFactory);
+    }
+
+    @Override
+    protected void checkDaoConfig() throws IllegalArgumentException {
+        if (this.hibernateTemplate == null){
+            throw new IllegalArgumentException("'sessionFactory' or 'hibernateTemplate' is required");
+        }
+    }
 
     public <T> void saveEntity(T entity) {
         this.hibernateTemplate.saveOrUpdate(entity);
     }
-
     public <T> void deleteEntity(T entity) {
         this.hibernateTemplate.delete(entity);
     }
@@ -51,6 +75,14 @@ public class BaseDAOImpl implements BaseDAO {
         return (T) this.hibernateTemplate.get(entityClass,id);
     }
 
+    /**
+     * @param hql
+     * @param pageNo  查询的页数
+     * @param pageSize 每页的大小
+     * @param real     实际的最大数据序号
+     * @param <T>
+     * @return
+     */
     public <T> List<T> getByPage(String hql, int pageNo, int pageSize, int real) {
         List<T> list=new ArrayList<T>();
         int begin=(pageNo-1)*pageSize;
