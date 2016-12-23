@@ -19,24 +19,12 @@ public class LogServiceImpl implements LogService {
 
     @Override
     public List<Log> selectAll(int page, int pageSize) {
-        int start = 1;
-        int end = pageSize;
-        if (page != 1){
-            start = pageSize * (page - 1) + 1;
-            end = pageSize * page;
-        }
-        return logDAO.selectAll(start,end);
+        return logDAO.selectAll(page,pageSize);
     }
 
     @Override
     public List<Log> selectLogByUserName(String username, int page, int pageSize) {
-        int start = 1;
-        int end = pageSize;
-        if (page != 1){
-            start = pageSize * (page - 1) + 1;
-            end = pageSize * page;
-        }
-        return logDAO.selectLogByUserName(username, start, end);
+        return logDAO.selectLogByUserName(username, page, pageSize);
     }
 
     @Override
@@ -47,7 +35,7 @@ public class LogServiceImpl implements LogService {
 
     @Override
     public int selectLogByUserName(String username, int pageSize) {
-        int pageCount = logDAO.selectLogByUserName(username).getUserid();
+        int pageCount = logDAO.selectLogByUserName(username);
         return pageCount % pageSize == 0 ? pageCount/pageSize : pageCount/pageSize +1;
     }
 
