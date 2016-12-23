@@ -41,7 +41,7 @@ public class LogServiceImpl implements LogService {
 
     @Override
     public int selectCount(int pageSize) {
-        int pageCount = logDAO.selectCount().getId();
+        int pageCount = logDAO.selectCount();
         return pageCount % pageSize == 0 ? pageCount/pageSize : pageCount/pageSize +1;
     }
 

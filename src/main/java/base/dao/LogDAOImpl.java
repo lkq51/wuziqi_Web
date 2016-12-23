@@ -26,10 +26,9 @@ public class LogDAOImpl  extends BaseDAOImpl implements LogDAO{
     
     //有问题
     @Override
-    public Log selectCount()
+    public int selectCount()
     {
-        String hql = "select count(*) from Log";
-        return (Log) this.getHibernateTemplate().find(hql);
+        return  this.getHibernateTemplate().getMaxResults();
     }
     //有问题
     @Override
