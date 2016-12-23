@@ -12,6 +12,7 @@
 <html>
   <head>
     <title>五子棋游戏--登录</title>
+    <jsp:include page="jsp/include/commonfile.jsp"/>
     <link rel="stylesheet" type="text/css" href="<%=path%>/static/css/login.css"/>
     <script src="<%=path%>/plugins/jquery/jquery-2.1.4.min.js"></script>
     <script src="<%=path%>/plugins/layer/layer.js"></script>
@@ -85,10 +86,6 @@
             $('#submit').attr('value','请输入密码!!!').css('background','red');
             return false;
         }
-        //if(username != 'Amaya' || password != '123456'){
-        //	$('#submit').attr('value','账号或密码错误!!!').css('background','red');
-        //	return false;
-        //}
         else{
             $('#submit').attr('value','Logining~');
             return true;

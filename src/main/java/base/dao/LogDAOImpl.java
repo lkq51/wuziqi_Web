@@ -22,7 +22,7 @@ public class LogDAOImpl  extends BaseDAOImpl implements LogDAO{
     @Override
     public List<Log> selectLogByUserName(String username, int page, int pageSize)
     {
-        String hql = "from Log log where log.username = 'lkq'";
+        String hql = "from Log log where log.username = "+"'"+username+"'";
         List<Log> logs = getByPage(hql,page,pageSize,realPage(hql));
         return logs;
     }
@@ -43,7 +43,7 @@ public class LogDAOImpl  extends BaseDAOImpl implements LogDAO{
      */
     @Override
     public int selectLogByUserName(String username) {
-        String hql = "from Log log where log.username = 'lkq'";
+        String hql = "from Log log where log.username ="+"'"+username+"'";
         return realPage(hql);
     }
 

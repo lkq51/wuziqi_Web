@@ -263,7 +263,7 @@
      */
     function tuling(message){
         var html;
-        $.getJSON("http://www.tuling123.com/openapi/api?key=6ad8b4d96861f17d68270216c880d5e3&info=" + message,function(data){
+        $.getJSON("http://www.tuling123.com/openapi/api?key=4e75f20160de4dd1860060b423fbc8c0&info=" + message,function(data){
             if(data.code == 100000){
                 html = "<li class=\"am-comment am-comment-primary\"><a href=\"#link-to-user-home\"><img width=\"48\" height=\"48\" class=\"am-comment-avatar\" alt=\"\" src=\"${ctx}/static/img/robot.jpg\"></a><div class=\"am-comment-main\">\n" +
                         "<header class=\"am-comment-hd\"><div class=\"am-comment-meta\">   <a class=\"am-comment-author\" href=\"#link-to-user\">Robot</a> 发表于<time> "+getDateFull()+"</time> 发送给: ${username}</div></header><div class=\"am-comment-bd\"> <p>"+data.text+"</p></div></div></li>";

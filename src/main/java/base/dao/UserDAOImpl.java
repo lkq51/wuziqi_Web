@@ -3,8 +3,11 @@ package base.dao;
 import base.model.User;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.dao.DataAccessException;
+import org.springframework.dao.DataAccessResourceFailureException;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.servlet.DispatcherServlet;
 
 import java.util.List;
 
@@ -14,11 +17,13 @@ import java.util.List;
 @Repository(value = "UserDAO")
 public class UserDAOImpl extends BaseDAOImpl implements UserDAO {
     @Override
-    public List<User> selectAll(int start,int end) {
-        String hql = "from User ";
-        return (List<User>) this.getHibernateTemplate().find(hql);
+    public List<User> selectAll(int page,int pageSize) {
+        String hql = "from User";
+        int real = selectCount();
+        List<User> users = getByPage(hql,page,pageSize,real);
+        return users;
     }
-    //有问题
+
     @Override
     public User selectUserByUserid(int userid)
     {
@@ -34,30 +39,45 @@ public class UserDAOImpl extends BaseDAOImpl implements UserDAO {
         return user;
     }
 
-    //有问题
+    /**
+     *
+     * @return  返回记录行数
+     */
     @Override
-    public User selectCount()
+    public int selectCount()
     {
-        String hql = "";
-        return (User) this.getHibernateTemplate().find(hql);
+        String hql = "from User";
+        return realPage(hql);
     }
 
     @Override
     public boolean save(User user) {
-        this.getHibernateTemplate().save(user);
-        return false;
+        try {
+            saveEntity(user);
+        }catch (DataAccessException e){
+            return false;
+        }
+        return true;
     }
 
     @Override
     public boolean update(User user)
     {
-        this.getHibernateTemplate().update(user);
+        try {
+            updateEntity(user);
+        }catch (DataAccessResourceFailureException e){
+            return false;
+        }
         return true;
     }
 
     @Override
     public boolean delete(int userid) {
-        deleteEmtityById(User.class,String.valueOf(userid));
-        return false;
+        try {
+            deleteEmtityById(User.class,String.valueOf(userid));
+        }catch (DataAccessResourceFailureException e){
+            return false;
+        }
+        return true;
     }
 }

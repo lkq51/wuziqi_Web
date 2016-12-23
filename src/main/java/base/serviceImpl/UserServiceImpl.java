@@ -17,13 +17,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<User> selectAll(int page, int pageSize) {
-        int start =1;
-        int end = pageSize;
-        if (page !=1){
-            start = pageSize * (page - 1) + 1;
-            end = pageSize * page;
-        }
-        return userDAO.selectAll(start, end);
+        return userDAO.selectAll(page, pageSize);
     }
 
     @Override
@@ -38,7 +32,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int selectCount(int pageSize) {
-        int pageCount = userDAO.selectCount().getId();
+        int pageCount = userDAO.selectCount();
         return pageCount % pageSize == 0 ? pageCount/pageSize:pageCount/pageSize + 1;
     }
 

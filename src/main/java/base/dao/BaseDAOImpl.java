@@ -97,8 +97,9 @@ public class BaseDAOImpl extends DaoSupport implements BaseDAO {
     }
 
     public <T> int realPage(String hql) {
-        int count=0;
+        int count = 0;
         count=this.hibernateTemplate.find(hql).size();
+        System.out.println(count);
         return count;
     }
 }
