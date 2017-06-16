@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
+<link rel="stylesheet" href="${ctx}/plugins/layui/css/layui.css">
 <link rel="stylesheet" href="${ctx}/plugins/amaze/css/amazeui.min.css">
 <link rel="stylesheet" href="${ctx}/plugins/amaze/css/admin.css">
 <link rel="stylesheet" href="${ctx}/plugins/contextjs/css/context.standalone.css">

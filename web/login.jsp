@@ -19,6 +19,7 @@
   </head>
   <body>
     <h1>Game Park</h1>
+    <div class="Sign_up"><a href="<%=path%>/user/signUp">注册</a></div>
     <div class="login-form">
       <div class="close"></div>
       <div class="head-info">
@@ -32,7 +33,6 @@
         <div class="key">
           <input id="userName" name="userName" type="text" placeholder="请输入帐号">
         </div>
-
         <div class="key">
           <input id="password" name="password" type="password" placeholder="请输入密码">
         </div>

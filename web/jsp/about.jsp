@@ -35,7 +35,7 @@
                         <p>通讯使用的是websocket</p>
                         <p>数据库使用的是mysql</p>
                         <p>端框架采用的是acle 10g express版</p>
-                        <p>前端框架采用的是<a href="http://http://amazeui.org" target="_blank">Amaze UI</a>,弹窗控件和分页控件采用的是<a href="http://http://layer.layui.com/" target="_blank">Layer</a>和<a href="http://http://laypage.layui.com/" target="_blank">Laypage</a></p>
+                        <p>前端框架采用的是<a href="http://amazeui.org" target="_blank">Amaze UI</a>,弹窗控件和分页控件采用的是<a href="http://layer.layui.com/" target="_blank">Layer</a>和<a href="http://laypage.layui.com/" target="_blank">Laypage</a></p>
                     </blockquote>
                 </div>
 

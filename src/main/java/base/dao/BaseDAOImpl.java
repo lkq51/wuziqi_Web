@@ -59,7 +59,7 @@ public class BaseDAOImpl extends DaoSupport implements BaseDAO {
         this.hibernateTemplate.delete(entity);
     }
 
-    public <T> void deleteEmtityById(Class<T> entityClass, Serializable id) {
+    public <T> void deleteEntityById(Class<T> entityClass, Serializable id) {
         this.hibernateTemplate.delete(this.getEntityById(entityClass,id));
     }
 

@@ -35,7 +35,13 @@
                 <div class="am-tabs-bd">
                     <div class="am-tab-panel am-fade am-in am-active" id="tab1">
                         <c:set value="${user}" var="user"/>
-                        <form class="am-form am-form-horizontal" id="information-form" action="${ctx}/${username}/update" method="post" data-am-validator>
+                        <form class="layui-form" action="${ctx}/${username}/update" method="post">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label"></label>
+                            </div>
+                        </form>
+                        <form class="am-form am-form-horizontal" id="information-form" action="${ctx}/${username}/update" method="post"
+                              data-am-validator>
                             <div class="am-form-group">
                                 <label for="username" class="am-u-sm-2 am-form-label">用户名</label>
                                 <div class="am-u-sm-10">
@@ -49,7 +55,22 @@
                                     <input type="text" id="nickname" name="nickname" value="${user.nickname}" required placeholder="这里输入你的昵称...">
                                 </div>
                             </div>
-    
+
+                            <div class="am-form-group">
+                                <%--@declare id="email"--%><label for="email" class="am-u-sm-2 am-form-label">邮箱</label>
+                                <div class = "am-u-sm-10">
+                                    <input type="text" id="email" name = "email" value="${user.email}" required
+                                           placeholder="这里输入你的邮箱地址...">
+                                </div>
+                            </div>
+                            <script>
+                                var str = $("#email").val();
+                                var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+                                if( reg.test(str) === false ){
+
+                                }
+                            </script>
+
                             <div class="am-form-group">
                                 <label for="sex" class="am-u-sm-2 am-form-label">性别</label>
                                 <div class="am-u-sm-10">
@@ -164,7 +185,7 @@
                 shift: 6
             });
         }
-    
+
         function checkFileType(){
             var format = ["bmp","jpg","gif","png"];
             var filename = $("#file").val();
@@ -178,7 +199,7 @@
                 });
                 return false;
             }
-        }
+}
     </script>
 </body>
 </html>

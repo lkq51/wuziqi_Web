@@ -25,18 +25,21 @@ public class UserDAOImpl extends BaseDAOImpl implements UserDAO {
     }
 
     @Override
-    public User selectUserByUserid(int userid)
+    public User selectUserByUserId(int userId)
     {
         String hql = "from User where User.id = ?";
-        return (User) this.getHibernateTemplate().find(hql,userid);
+        return (User) this.getHibernateTemplate().find(hql,userId);
     }
 
     @Override
-    public User selectUserByUserName(String username) {
+    public User selectUserByUserName(String userName) {
         String hql = "from User user where user.username = ?";
-        List<User> users =(List<User>) this.getHibernateTemplate().find(hql,username);
-        User user = users.get(0);
-        return user;
+        List<User> users =(List<User>) this.getHibernateTemplate().find(hql,userName);
+        if (null != users && users.size() > 0 ){
+            User user = users.get(0);
+            return user;
+        }
+        return null;
     }
 
     /**
@@ -72,9 +75,9 @@ public class UserDAOImpl extends BaseDAOImpl implements UserDAO {
     }
 
     @Override
-    public boolean delete(int userid) {
+    public boolean delete(int userId) {
         try {
-            deleteEmtityById(User.class,String.valueOf(userid));
+            deleteEntityById(User.class,String.valueOf(userId));
         }catch (DataAccessResourceFailureException e){
             return false;
         }

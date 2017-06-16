@@ -11,7 +11,7 @@ public interface BaseDAO {
 
     public <T> void deleteEntity(T entity);
 
-    public <T> void deleteEmtityById(Class <T> entityClass, Serializable id);
+    public <T> void deleteEntityById(Class <T> entityClass, Serializable id);
 
     public <T> void updateEntity(T entity);
 

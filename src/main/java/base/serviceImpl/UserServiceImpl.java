@@ -21,8 +21,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User selectUserByUserid(int userid) {
-        return userDAO.selectUserByUserid(userid);
+    public User selectUserByUserId(int userId) {
+        return userDAO.selectUserByUserId(userId);
     }
 
     @Override
@@ -47,8 +47,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean delete(int userid) {
-        return userDAO.delete(userid);
+    public boolean delete(int userId) {
+        return userDAO.delete(userId);
     }
 
     public void setUserDAO(UserDAO userDAO) {

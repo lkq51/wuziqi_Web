@@ -1935,6 +1935,7 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
      * @param  {Range}   range    range对象
      */
     function updateCollapse(range) {
+        //noinspection JSAnnotator
         range.collapsed =
             range.startContainer && range.endContainer &&
                 range.startContainer === range.endContainer &&
@@ -1981,11 +1982,13 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
      */
     var Range = dom.Range = function (document,body) {
         var me = this;
+        //noinspection JSAnnotator
         me.startContainer =
             me.startOffset =
                 me.endContainer =
                     me.endOffset = null;
         me.document = document;
+        //noinspection JSAnnotator
         me.collapsed = true;
         me.body = body;
     };

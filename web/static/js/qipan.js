@@ -11,7 +11,7 @@ var qipan = document.getElementById("qipan");
     interval=chessboardSize / (grid-1); //每个格子的边长
 if (qipan.getContext){
     var context = qipan.getContext("2d"),
-        e = e|| window.event,
+        e = e || window.event,
         qipanSize = {width:chessboardSize, height:chessboardSize},
         x = 0,
         y = 0;

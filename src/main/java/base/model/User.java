@@ -1,10 +1,8 @@
 package base.model;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 
 /**
  * Created by lou on 16/11/7.

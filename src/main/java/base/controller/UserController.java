@@ -47,8 +47,7 @@ public class UserController {
     */
     @RequestMapping(value = "{username}",method = RequestMethod.GET)
     public ModelAndView selectUserByusername(@PathVariable("username")String username, @ModelAttribute("username")String sessionid){
-
-        ModelAndView view =new ModelAndView("jsp/information");
+        ModelAndView view = new ModelAndView("jsp/information");
         user = userService.selectUserByUserName(username);
         view.addObject("user",user);
         return view;
@@ -75,8 +74,12 @@ public class UserController {
     */
     @RequestMapping(value = "{username}/update",method = RequestMethod.POST)
     public String update(@PathVariable("username") String username,@ModelAttribute("username") String sessionid, User user, RedirectAttributes attributes, NetUtil netUil, LogUtil logUtil, CommonDate date, WordDefined defined, HttpServletRequest request){
-        System.out.println(user.getAge()+user.getUsername()+user.getNickname());
-        boolean flag = userService.update(user);
+        boolean flag = false;
+        try{
+            flag = userService.update(user);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         if (flag){
             logService.save(logUtil.setLog(user.getId(),username,date.getTime24(),defined.LOG_TYPE_UPDATE,defined.LOG_DETAIL_UPDATE_PROFILE,netUil.getIpAddress(request)));
             attributes.addFlashAttribute("message","["+username+"]资料更新成功!");
@@ -141,7 +144,7 @@ public class UserController {
     @ResponseBody
     public void head(@PathVariable("username") String username, HttpServletRequest request, HttpServletResponse response){
         try {
-            user =userService.selectUserByUserName(username);
+            user = userService.selectUserByUserName(username);
             String path = user.getProfilehead();
             String rootPath = request.getSession().getServletContext().getRealPath("/");
             String picturePath = rootPath + path;

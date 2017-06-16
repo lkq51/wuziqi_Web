@@ -3,7 +3,7 @@
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
-    <title>WebChat | 系统日志</title>
+    <title>系统日志</title>
     <jsp:include page="include/commonfile.jsp"/>
 </head>
 <body>
@@ -55,13 +55,13 @@
     $(function(){
         laypage({
             cont: 'page',
-            pages: ${count},
+            pages: ${count} / 5,
             curr: function(){
                 var page = location.search.match(/page=(\d+)/);
                 return page ? page[1] : 1;
             }(),
             skin: '#AF0000',
-            groups: 5, //连续显示分页数
+            groups: ${count} / 5, //连续显示分页数
             jump: function(e, first){ //触发分页后的回调
                 if(!first){ //一定要加此判断，否则初始时会无限刷新
                     location.href = '?page='+e.curr;
