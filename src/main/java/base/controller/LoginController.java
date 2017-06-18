@@ -24,7 +24,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequestMapping(value = "user")
 public class LoginController {
-    @Resource private User user;
+    @Resource   private User user;
     @Resource private UserService userService;
     @Resource private Log log;
     @Resource private LogService logService;

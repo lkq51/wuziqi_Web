@@ -1,13 +1,9 @@
 package base.dao;
 
 import base.model.User;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataAccessResourceFailureException;
-import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.servlet.DispatcherServlet;
 
 import java.util.List;
 

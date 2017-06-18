@@ -14,7 +14,6 @@ import javax.annotation.Resource;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -73,7 +72,7 @@ public class UserController {
     * @return
     */
     @RequestMapping(value = "{username}/update",method = RequestMethod.POST)
-    public String update(@PathVariable("username") String username,@ModelAttribute("username") String sessionid, User user, RedirectAttributes attributes, NetUtil netUil, LogUtil logUtil, CommonDate date, WordDefined defined, HttpServletRequest request){
+    public String update(@PathVariable("username") String username, @ModelAttribute("username") String sessionid, User user, RedirectAttributes attributes, NetUtil netUil, LogUtil logUtil, CommonDate date, WordDefined defined, HttpServletRequest request){
         boolean flag = false;
         try{
             flag = userService.update(user);

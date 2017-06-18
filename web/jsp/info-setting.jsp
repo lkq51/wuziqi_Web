@@ -8,107 +8,95 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
-<html>
+<!DOCTYPE html>
 <head>
     <title>设置</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0 maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <jsp:include page="include/commonfile.jsp"/>
 </head>
 <body>
     <jsp:include page="include/header.jsp"/>
-    <div class="am-cf admin-main">
+    <div >
         <jsp:include page="include/sidebar.jsp"/>
-    
+
         <!-- content start -->
         <div class="admin-content">
     
             <div class="am-cf am-padding">
                 <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">个人设置</strong> / <small>form</small></div>
             </div>
-    
-            <div class="am-tabs am-margin" data-am-tabs>
-                <ul class="am-tabs-nav am-nav am-nav-tabs">
-                    <li class="am-active"><a href="#tab1">基本信息</a></li>
-                    <li><a href="#tab2">修改头像</a></li>
-                    <li><a href="#tab3">修改密码</a></li>
+            <div class="layui-tab " lay-filter="tab">
+                <ul class="layui-tab-title">
+                    <li class="layui-this">基本信息</li>
+                    <li>修改头像</li>
+                    <li>修改密码</li>
                 </ul>
     
-                <div class="am-tabs-bd">
-                    <div class="am-tab-panel am-fade am-in am-active" id="tab1">
+                <div class="layui-tab-content">
+                    <div class="layui-tab-item layui-show">
                         <c:set value="${user}" var="user"/>
-                        <form class="layui-form" action="${ctx}/${username}/update" method="post">
-                            <div class="layui-form-item">
-                                <label class="layui-form-label"></label>
-                            </div>
-                        </form>
-                        <form class="am-form am-form-horizontal" id="information-form" action="${ctx}/${username}/update" method="post"
-                              data-am-validator>
-                            <div class="am-form-group">
-                                <label for="username" class="am-u-sm-2 am-form-label">用户名</label>
-                                <div class="am-u-sm-10">
-                                    <input type="text" id="username" name="username" value="${user.username}" disabled>
-                                </div>
-                            </div>
-    
-                            <div class="am-form-group">
-                                <label for="nickname" class="am-u-sm-2 am-form-label">昵称</label>
-                                <div class="am-u-sm-10">
-                                    <input type="text" id="nickname" name="nickname" value="${user.nickname}" required placeholder="这里输入你的昵称...">
+                        <form class="layui-form "  action="${ctx}/${username}/update" method="post" >
+                            <div class="layui-form-item" >
+                                <label class="layui-form-label" >用户名</label>
+                                <div class="layui-input-inline" >
+                                    <input type="text" name="username" value="${user.username}" required lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input"/>
                                 </div>
                             </div>
 
-                            <div class="am-form-group">
-                                <%--@declare id="email"--%><label for="email" class="am-u-sm-2 am-form-label">邮箱</label>
-                                <div class = "am-u-sm-10">
-                                    <input type="text" id="email" name = "email" value="${user.email}" required
-                                           placeholder="这里输入你的邮箱地址...">
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">昵称</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="nickname" value="${user.nickname}" required lay-verify="required" placeholder="请输入昵称" autocomplete="off" class="layui-input"/>
+                                </div>
+                            </div>
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">邮箱</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="email" value="${user.email}" required lay-verify="required\email" placeholder="请输入邮箱" autocomplete="off" class="layui-input"/>
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">tips</div>
+                            </div>
+
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">性别</label>
+                                <div class="layui-input-inline">
+                                    <input type="radio" name="sex" value="1" title="男"/>
+                                    <input type="radio" name="sex" value="2" title="女"/>
                                 </div>
                             </div>
                             <script>
-                                var str = $("#email").val();
-                                var reg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
-                                if( reg.test(str) === false ){
-
-                                }
+                                $(":radio[value='" + ${user.sex} + "']").prop("checked", "checked");
                             </script>
+                            <div class="layui-form-item">
+                                <label class="layui-form-label">年龄</label>
+                                <div class="layui-input-inline">
+                                    <input id="age" name="age" value="${user.age}" required lay-verify="required\number" placeholder="请输入年龄" autocomplete="off" class="layui-input">
+                                </div>
+                                <div class="layui-form-mid layui-word-aux">tips</div>
+                            </div>
 
-                            <div class="am-form-group">
-                                <label for="sex" class="am-u-sm-2 am-form-label">性别</label>
-                                <div class="am-u-sm-10">
-                                    <select id="sex" name="sex" data-am-selected>
-                                        <option selected></option>
-                                        <option value="1">男</option>
-                                        <option value="0">女</option>
-                                        <option value="-1">保密</option>
-                                    </select>
-                                </div>
-                                <script>
-                                    $('#sex').find('option').eq(${user.sex}).attr('selected', true);
-                                </script>
-                            </div>
-                            <div class="am-form-group">
-                                <label for="age" class="am-u-sm-2 am-form-label">年龄</label>
-                                <div class="am-u-sm-10">
-                                    <input type="number" id="age" name="age" min="1" max="100" value="${user.age}" placeholder="这里输入你的年龄...">
+                            <div class="layui-form-item layui-form-text">
+                                 <label class="layui-form-label">个性签名</label>
+                                <div class="layui-input-block">
+                                    <textarea name = "profile" id="profile"  placeholder="请输入内容" class="layui-textarea">${user.profile}</textarea>
                                 </div>
                             </div>
-                            <div class="am-form-group">
-                                <label for="profile" class="am-u-sm-2 am-form-label">个性签名</label>
-                                <div class="am-u-sm-10">
-                                    <textarea class="" id="profile" name="profile" rows="5" placeholder="这里可以写下你的个性签名..."></textarea>
-                                </div>
-                                <script>
-                                    $("#profile").val("${user.profile}");
-                                </script>
-                            </div>
-                            <div class="am-form-group">
-                                <div class="am-u-sm-10 am-u-sm-offset-2">
-                                    <button type="submit" class="am-btn am-round am-btn-success"><span class="am-icon-send"></span> 提交</button>
+
+                            <div class="layui-form-item">
+                                <div class="layui-input-block">
+                                    <button class="layui-btn" lay-submit lay-filter="submit">保存</button>
+                                    <button class="layui-btn layui-btn-primary">重置</button>
                                 </div>
                             </div>
                         </form>
                     </div>
+
     
-                    <div class="am-tab-panel am-fade" id="tab2">
+                    <div class="layui-tab-item">
                         <form class="am-form am-form-horizontal" action="${ctx}/${username}/upload" enctype="multipart/form-data" method="post" onsubmit="return checkFileType();" style="text-align: center;">
                             <div style="text-align: center;margin-bottom: 10px">
                                 <img class="am-circle" src="${ctx}/${user.profilehead}" width="140" height="140" alt="lkq"/>
@@ -134,7 +122,7 @@
                         </form>
                     </div>
     
-                    <div class="am-tab-panel am-fade" id="tab3">
+                    <div class="layui-tab-item">
                         <form class="am-form am-form-horizontal" data-am-validator action="${ctx}/${username}/pass" method="post">
                             <div class="am-form-group">
                                 <label for="password1" class="am-u-sm-2 am-form-label">原密码</label>
@@ -174,6 +162,11 @@
     </a>
     <jsp:include page="include/footer.jsp"/>
     <script>
+        //注意：选项卡 依赖 element 模块，否则无法进行功能性操作
+        layui.use(['element', 'form'], function(){
+            var element = layui.element();
+            var form = layui.form();
+        });
         if("${message}"){
             layer.msg('${message}', {
                 offset: 0,

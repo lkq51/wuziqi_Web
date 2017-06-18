@@ -11,7 +11,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>五子棋游戏--登录</title>
+    <title>GamePark--登录</title>
     <jsp:include page="jsp/include/commonfile.jsp"/>
     <link rel="stylesheet" type="text/css" href="<%=path%>/static/css/login.css"/>
     <script src="<%=path%>/plugins/jquery/jquery-2.1.4.min.js"></script>

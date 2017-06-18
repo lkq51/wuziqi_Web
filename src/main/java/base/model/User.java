@@ -2,16 +2,20 @@ package base.model;
 
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.sql.Timestamp;
 
 /**
- * Created by lou on 16/11/7.
+ * Created by lkq on 2017/6/18.
  */
 @Repository(value = "user")
 @Entity
-@Table(name = "user", schema = "wuziqi")
 public class User {
     private int id;
+    private int userid;
     private boolean admin;
     private String username;
     private String password;
@@ -36,6 +40,16 @@ public class User {
     }
 
     @Basic
+    @Column(name = "userid", nullable = false)
+    public int getUserid() {
+        return userid;
+    }
+
+    public void setUserid(int userid) {
+        this.userid = userid;
+    }
+
+    @Basic
     @Column(name = "admin", nullable = false)
     public boolean isAdmin() {
         return admin;
@@ -46,7 +60,7 @@ public class User {
     }
 
     @Basic
-    @Column(name = "username", nullable = true, length = 255)
+    @Column(name = "username", nullable = false, length = 255)
     public String getUsername() {
         return username;
     }
@@ -56,7 +70,7 @@ public class User {
     }
 
     @Basic
-    @Column(name = "password", nullable = true, length = 255)
+    @Column(name = "password", nullable = false, length = 255)
     public String getPassword() {
         return password;
     }
@@ -73,32 +87,6 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        User userPo = (User) o;
-
-        if (id != userPo.id) return false;
-        if (admin != userPo.admin) return false;
-        if (username != null ? !username.equals(userPo.username) : userPo.username != null) return false;
-        if (password != null ? !password.equals(userPo.password) : userPo.password != null) return false;
-        if (email != null ? !email.equals(userPo.email) : userPo.email != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (admin ? 1 : 0);
-        result = 31 * result + (username != null ? username.hashCode() : 0);
-        result = 31 * result + (password != null ? password.hashCode() : 0);
-        result = 31 * result + (email != null ? email.hashCode() : 0);
-        return result;
     }
 
     @Basic
@@ -179,5 +167,50 @@ public class User {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (id != user.id) return false;
+        if (userid != user.userid) return false;
+        if (admin != user.admin) return false;
+        if (status != user.status) return false;
+        if (username != null ? !username.equals(user.username) : user.username != null) return false;
+        if (password != null ? !password.equals(user.password) : user.password != null) return false;
+        if (email != null ? !email.equals(user.email) : user.email != null) return false;
+        if (nickname != null ? !nickname.equals(user.nickname) : user.nickname != null) return false;
+        if (sex != null ? !sex.equals(user.sex) : user.sex != null) return false;
+        if (age != null ? !age.equals(user.age) : user.age != null) return false;
+        if (profilehead != null ? !profilehead.equals(user.profilehead) : user.profilehead != null) return false;
+        if (profile != null ? !profile.equals(user.profile) : user.profile != null) return false;
+        if (registertime != null ? !registertime.equals(user.registertime) : user.registertime != null) return false;
+        if (lastlogintime != null ? !lastlogintime.equals(user.lastlogintime) : user.lastlogintime != null)
+            return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + userid;
+        result = 31 * result + (admin ? 1 : 0);
+        result = 31 * result + (username != null ? username.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (nickname != null ? nickname.hashCode() : 0);
+        result = 31 * result + (sex != null ? sex.hashCode() : 0);
+        result = 31 * result + (age != null ? age.hashCode() : 0);
+        result = 31 * result + (profilehead != null ? profilehead.hashCode() : 0);
+        result = 31 * result + (profile != null ? profile.hashCode() : 0);
+        result = 31 * result + (registertime != null ? registertime.hashCode() : 0);
+        result = 31 * result + (lastlogintime != null ? lastlogintime.hashCode() : 0);
+        result = 31 * result + (status ? 1 : 0);
+        return result;
     }
 }
