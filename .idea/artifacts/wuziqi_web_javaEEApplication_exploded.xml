@@ -6,6 +6,19 @@
       <element id="directory" name="lib">
         <element id="archive" name="wuziqi_web.jar">
           <element id="module-output" name="wuziqi_web" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-expression:4.3.9.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:4.3.9.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-messaging:4.3.9.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-orm:4.3.9.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-oxm:4.3.9.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-test:4.3.9.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.3.9.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-web:4.3.9.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context:4.3.9.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context-support:4.3.9.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.3.9.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-beans:4.3.9.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.data:spring-data-commons-core:1.4.1.RELEASE" />
         </element>
         <element id="library" level="project" name="aspectjweaver" />
         <element id="library" level="project" name="Hibernate 4.2.2-4.2.2" />

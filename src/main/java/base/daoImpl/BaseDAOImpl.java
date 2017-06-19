@@ -1,5 +1,6 @@
-package base.dao;
+package base.daoImpl;
 
+import base.dao.BaseDAO;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

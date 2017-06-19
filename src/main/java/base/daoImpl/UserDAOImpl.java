@@ -1,5 +1,6 @@
-package base.dao;
+package base.daoImpl;
 
+import base.dao.UserDAO;
 import base.model.User;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataAccessResourceFailureException;
@@ -23,7 +24,7 @@ public class UserDAOImpl extends BaseDAOImpl implements UserDAO {
     @Override
     public User selectUserByUserId(int userId)
     {
-        String hql = "from User where User.id = ?";
+        String hql = "from User where User.userid = ?";
         return (User) this.getHibernateTemplate().find(hql,userId);
     }
 
@@ -73,7 +74,8 @@ public class UserDAOImpl extends BaseDAOImpl implements UserDAO {
     @Override
     public boolean delete(int userId) {
         try {
-            deleteEntityById(User.class,String.valueOf(userId));
+            User user = selectUserByUserId(userId);
+            deleteEntityById(User.class,String.valueOf(user.getId()));
         }catch (DataAccessResourceFailureException e){
             return false;
         }

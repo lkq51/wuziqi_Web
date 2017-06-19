@@ -1,5 +1,6 @@
-package base.dao;
+package base.daoImpl;
 
+import base.dao.LogDAO;
 import base.model.Log;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
@@ -9,7 +10,7 @@ import java.util.List;
  * Created by lkq on 2016/12/14.
  */
 @Repository(value = "logDAO")
-public class LogDAOImpl  extends BaseDAOImpl implements LogDAO{
+public class LogDAOImpl  extends BaseDAOImpl implements LogDAO {
 
     @Override
     public List<Log> selectAll(int page, int pageSize) {

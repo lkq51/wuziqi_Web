@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-	<class name="base.model.Usersetting" table="usersetting" schema="wuziqi">
+	<class name="base.model.Personsetting" table="personsetting" schema="wuziqi">
 		<id name="id">
 			<column name="_id" sql-type="int(255)"/>
 		</id>
@@ -14,14 +14,14 @@
 		<property name="pagesize">
 			<column name="pagesize" sql-type="int(11)" not-null="true"/>
 		</property>
-		<property name="showOnlinecounts">
-			<column name="show_onlinecounts" sql-type="bit(1)" not-null="true"/>
+		<property name="onlinereminder">
+			<column name="onlinereminder" sql-type="bit(1)" not-null="true"/>
 		</property>
-		<property name="friendtips">
-			<column name="friendtips" sql-type="bit(1)" not-null="true"/>
+		<property name="onlinenumber">
+			<column name="onlinenumber" sql-type="bit(1)" not-null="true"/>
 		</property>
-		<property name="showmyinfo">
-			<column name="showmyinfo" sql-type="bit(1)" not-null="true"/>
+		<property name="myinfoshow">
+			<column name="myinfoshow" sql-type="bit(1)" not-null="true"/>
 		</property>
 	</class>
 </hibernate-mapping>

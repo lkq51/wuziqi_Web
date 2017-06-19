@@ -2,7 +2,9 @@ package base.controller;
 
 import base.model.Log;
 import base.model.User;
+import base.model.UserInfo;
 import base.service.LogService;
+import base.service.UserInfoService;
 import base.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,14 +26,17 @@ import javax.servlet.http.HttpSession;
 @Controller
 @RequestMapping(value = "user")
 public class LoginController {
-    @Resource   private User user;
+    @Resource private User user;
+    @Resource private UserInfo userInfo;
     @Resource private UserService userService;
+    @Resource private UserInfoService userInfoService;
     @Resource private Log log;
     @Resource private LogService logService;
 
     @RequestMapping(value = "login",method = RequestMethod.POST)
-    public String login(@RequestParam("userName") String userName,@RequestParam("password") String password, HttpSession session, RedirectAttributes attributes, WordDefined defined, CommonDate date, LogUtil logUtil, NetUtil netUtil, HttpServletRequest request){
+    public String login(@RequestParam("username") String userName,@RequestParam("password") String password, HttpSession session, RedirectAttributes attributes, WordDefined defined, CommonDate date, LogUtil logUtil, NetUtil netUtil, HttpServletRequest request){
         user = userService.selectUserByUserName(userName);
+        userInfo = userInfoService.selectUserByUserId(user.getUserid());
         if (user == null){
             attributes.addFlashAttribute("error",defined.LOGIN_USERID_ERROR);
             return "redirect:/login";
@@ -45,10 +50,10 @@ public class LoginController {
                     return "redirect:/login";
                 }else {
                     logService.save(logUtil.setLog(user.getId(),userName,date.getTime24(),defined.LOG_TYPE_LOGIN,defined.LOG_DETAIL_USER_LOGIN,netUtil.getIpAddress(request)));
-                    session.setAttribute("userid",user.getId());
+                    session.setAttribute("userid",user.getUserid());
                     session.setAttribute("username",userName);
                     session.setAttribute("login_status",true);
-                    user.setLastlogintime(date.getTime24());
+                    userInfo.setLastlogintime(date.getTime24());
                     userService.update(user);
                     attributes.addFlashAttribute("message",defined.LOGIN_SUCCESS);
                     return "redirect:/chat";

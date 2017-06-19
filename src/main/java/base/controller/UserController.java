@@ -1,7 +1,9 @@
 package base.controller;
 
 import base.model.User;
+import base.model.UserInfo;
 import base.service.LogService;
+import base.service.UserInfoService;
 import base.service.UserService;
 import org.springframework.web.multipart.MultipartFile;
 import utils.*;
@@ -25,7 +27,9 @@ import java.io.IOException;
 @SessionAttributes("username")
 public class UserController {
     @Resource private User user;
+    @Resource private UserInfo userInfo;
     @Resource private UserService userService;
+    @Resource private UserInfoService userInfoService;
     @Resource private LogService logService;
 
     /**
@@ -123,7 +127,7 @@ public class UserController {
         try {
             String fileurl = uploadUtil.upload(request,"upload",username);
             user = userService.selectUserByUserName(username);
-            user.setProfilehead(fileurl);
+            userInfo.setProfilehead(fileurl);
             boolean flag = userService.update(user);
             if (flag){
                 logService.save(logUtil.setLog(user.getId(),username,date.getTime24(),defined.LOG_TYPE_UPDATE,defined.LOG_DETAIL_UPDATE_PROFILEHEAD,netUtil.getIpAddress(request)));
@@ -144,7 +148,7 @@ public class UserController {
     public void head(@PathVariable("username") String username, HttpServletRequest request, HttpServletResponse response){
         try {
             user = userService.selectUserByUserName(username);
-            String path = user.getProfilehead();
+            String path = userInfo.getProfilehead();
             String rootPath = request.getSession().getServletContext().getRealPath("/");
             String picturePath = rootPath + path;
             response.setContentType("image/jpeg;charset=utf-8");

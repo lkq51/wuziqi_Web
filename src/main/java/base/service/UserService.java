@@ -8,7 +8,7 @@ import java.util.List;
  * Created by lkq on 2016/10/12.
  */
 public interface UserService {
-    List<User> selectAll(int page,int pageSize);
+    List<User> selectAll(int page, int pageSize);
     User selectUserByUserId(int userId);
     User selectUserByUserName(String username);
     int selectCount(int pageSize);

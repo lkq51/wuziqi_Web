@@ -19,14 +19,14 @@
 </head>
 <body>
     <jsp:include page="include/header.jsp"/>
-    <div >
+    <div class="am-cf admin-main">
         <jsp:include page="include/sidebar.jsp"/>
 
         <!-- content start -->
         <div class="admin-content">
     
             <div class="am-cf am-padding">
-                <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">个人设置</strong> / <small>form</small></div>
+                <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">个人设置</strong> / <small>${user.username}</small></div>
             </div>
             <div class="layui-tab " lay-filter="tab">
                 <ul class="layui-tab-title">
@@ -38,11 +38,11 @@
                 <div class="layui-tab-content">
                     <div class="layui-tab-item layui-show">
                         <c:set value="${user}" var="user"/>
-                        <form class="layui-form "  action="${ctx}/${username}/update" method="post" >
+                        <form class="layui-form "  action="${ctx}/${user}/update" method="post"  style="text-align: center;">
                             <div class="layui-form-item" >
                                 <label class="layui-form-label" >用户名</label>
                                 <div class="layui-input-inline" >
-                                    <input type="text" name="username" value="${user.username}" required lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input"/>
+                                    <input type="text" name="username" value="${user.username}" required lay-verify="required" class="layui-input" disabled/>
                                 </div>
                             </div>
 
@@ -69,7 +69,7 @@
                                 </div>
                             </div>
                             <script>
-                                $(":radio[value='" + ${user.sex} + "']").prop("checked", "checked");
+                                $(":radio[value='" + ${user.sex} + "']").prop("checked", "checked");0
                             </script>
                             <div class="layui-form-item">
                                 <label class="layui-form-label">年龄</label>
