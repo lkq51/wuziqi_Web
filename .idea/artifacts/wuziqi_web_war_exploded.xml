@@ -25,8 +25,6 @@
           <element id="library" level="project" name="Maven: org.springframework.data:spring-data-commons-core:1.4.1.RELEASE" />
           <element id="library" level="project" name="quartz-1.7.3" />
           <element id="library" level="project" name="jackson-core-asl-1.9.13" />
-          <element id="library" level="project" name="jackson-annotations-2.2.3" />
-          <element id="library" level="project" name="jackson-databind-2.2.3" />
           <element id="library" level="project" name="fastjson-1.2.7" />
           <element id="library" level="project" name="jul-to-slf4j-1.7.21" />
           <element id="library" level="project" name="javax.servlet-api-3.1.0" />
@@ -36,21 +34,25 @@
           <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.21" />
           <element id="library" level="project" name="Maven: org.slf4j:jcl-over-slf4j:1.7.21" />
           <element id="library" level="project" name="Maven: jstl:jstl:1.2" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-websocket:4.3.9.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-context:4.3.9.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-orm:4.3.9.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-test:4.3.9.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.3.9.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.3.9.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-web:4.3.9.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:4.3.9.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-messaging:4.3.9.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-oxm:4.3.9.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-beans:4.3.9.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-expression:4.3.9.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-context-support:4.3.9.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-core:4.3.9.RELEASE" />
-          <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.3.9.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-aop:4.0.9.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-beans:4.0.9.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context-support:4.0.9.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-context:4.0.9.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-core:4.0.9.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-expression:4.0.9.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:4.0.9.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-messaging:4.0.9.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-orm:4.0.9.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-oxm:4.0.9.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-test:4.0.9.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.0.9.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-web:4.0.9.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.0.9.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-websocket:4.0.9.RELEASE" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.8.7" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.8.7" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.8.7" />
+          <element id="library" level="project" name="spring-aop-4.3.9.RELEASE" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="wuziqi_web/web/Web" />

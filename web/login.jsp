@@ -17,7 +17,6 @@
 </head>
 <body>
 <h1>Game Park</h1>
-<div class="Sign_up"><a href="<%=path%>/user/signUp">注册</a></div>
 <div class="login-form">
     <div class="close"></div>
     <div class="head-info">
@@ -34,6 +33,7 @@
         <div class="key">
             <input id="password" name="password" type="password" placeholder="请输入密码">
         </div>
+        <div class="Sign_up" ><a href="<%=path%>/user/signUp" style="color: #be2924">注册</a></div>
         <div class="signin">
             <input type="submit" value="login" id="submit">
         </div>
@@ -100,5 +100,3 @@
 </script>
 </body>
 </html>
-Contact GitHub API Training Shop Blog About
-© 2017 GitHub, Inc. Terms Privacy Security Status Help

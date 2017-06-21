@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="jackson-databind-2.2.3">
+  <library name="xwork-core">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/jackson-databind-2.2.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/xwork-core.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

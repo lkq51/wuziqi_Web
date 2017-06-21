@@ -10,8 +10,8 @@ import java.util.List;
 
 public interface UserInfoService {
     List<UserInfo> selectAll(int page, int pageSize);
-    UserInfo selectUserByUserId(int userId);
-    UserInfo selectUserByUserName(String username);
+    UserInfo getUserInfoByUserId(int userId);
+    UserInfo getUserInfoByUserName(String username);
     int selectCount(int pageSize);
     boolean save(UserInfo userInfo);
     boolean update(UserInfo userInfo);

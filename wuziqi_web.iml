@@ -50,7 +50,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -61,15 +60,16 @@
     <orderEntry type="library" name="commons-logging-1.2" level="project" />
     <orderEntry type="library" name="aopalliance-1.0" level="project" />
     <orderEntry type="library" name="quartz-1.7.3" level="project" />
-    <orderEntry type="library" name="jackson-annotations-2.2.3" level="project" />
     <orderEntry type="library" name="jackson-core-asl-1.9.13" level="project" />
-    <orderEntry type="library" name="jackson-databind-2.2.3" level="project" />
     <orderEntry type="library" name="fastjson-1.2.7" level="project" />
     <orderEntry type="library" name="jul-to-slf4j-1.7.21" level="project" />
     <orderEntry type="library" name="javax.servlet-api-3.1.0" level="project" />
     <orderEntry type="library" name="commons-fileupload" level="project" />
     <orderEntry type="library" name="commons-io" level="project" />
     <orderEntry type="library" name="jul-to-slf4j-1.7.21" level="project" />
+    <orderEntry type="library" name="spring-aop-4.3.9.RELEASE" level="project" />
+    <orderEntry type="library" name="asm" level="project" />
+    <orderEntry type="library" name="xwork-core" level="project" />
     <orderEntry type="library" name="Maven: jstl:jstl:1.2" level="project" />
     <orderEntry type="library" name="Maven: log4j:log4j:1.2.16" level="project" />
     <orderEntry type="library" name="Maven: c3p0:c3p0:0.9.1" level="project" />
@@ -82,22 +82,23 @@
     <orderEntry type="library" name="Maven: net.sf.ezmorph:ezmorph:1.0.6" level="project" />
     <orderEntry type="library" name="Maven: net.sf.json-lib:json-lib:2.4" level="project" />
     <orderEntry type="library" name="Maven: javax.websocket:javax.websocket-api:1.0" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-core:4.3.9.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-web:4.3.9.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-beans:4.3.9.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-context:4.3.9.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-oxm:4.3.9.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-orm:4.3.9.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-tx:4.3.9.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-jdbc:4.3.9.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-webmvc:4.3.9.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-expression:4.3.9.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-aop:4.3.9.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-context-support:4.3.9.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-test:4.3.9.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-core:4.0.9.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-web:4.0.9.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-beans:4.0.9.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-context:4.0.9.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-oxm:4.0.9.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-orm:4.0.9.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-tx:4.0.9.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-jdbc:4.0.9.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-webmvc:4.0.9.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-expression:4.0.9.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-aop:4.0.9.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: aopalliance:aopalliance:1.0" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-context-support:4.0.9.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-test:4.0.9.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.data:spring-data-commons-core:1.4.1.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-websocket:4.3.9.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework:spring-messaging:4.3.9.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-websocket:4.0.9.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework:spring-messaging:4.0.9.RELEASE" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.slf4j:jcl-over-slf4j:1.7.21" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.21" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:jul-to-slf4j:1.7.21" level="project" />
@@ -106,8 +107,8 @@
     <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-slf4j-impl:2.5" level="project" />
     <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-web:2.5" level="project" />
     <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-jul:2.5" level="project" />
-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.2.3" level="project" />
-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.2.3" level="project" />
-    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.2.3" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.8.7" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.8.7" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.8.7" level="project" />
   </component>
 </module>

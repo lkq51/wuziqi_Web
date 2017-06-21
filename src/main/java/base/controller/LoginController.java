@@ -34,13 +34,13 @@ public class LoginController {
     @Resource private LogService logService;
 
     @RequestMapping(value = "login",method = RequestMethod.POST)
-    public String login(@RequestParam("username") String userName,@RequestParam("password") String password, HttpSession session, RedirectAttributes attributes, WordDefined defined, CommonDate date, LogUtil logUtil, NetUtil netUtil, HttpServletRequest request){
+    public String login(@RequestParam("userName") String userName,@RequestParam("password") String password, HttpSession session, RedirectAttributes attributes, WordDefined defined, CommonDate date, LogUtil logUtil, NetUtil netUtil, HttpServletRequest request){
         user = userService.selectUserByUserName(userName);
-        userInfo = userInfoService.selectUserByUserId(user.getUserid());
         if (user == null){
             attributes.addFlashAttribute("error",defined.LOGIN_USERID_ERROR);
             return "redirect:/login";
         }else {
+            userInfo = userInfoService.getUserInfoByUserId(user.getUserid());
             if (!user.getPassword().equals(password)){
                 attributes.addFlashAttribute("error",defined.LOGIN_PASSWORD_ERROR);
                 return "redirect:/login";

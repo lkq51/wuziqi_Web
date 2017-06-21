@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by lkq on 2016/12/16.
  */
-@Repository(value = "UserDAO")
+@Repository(value = "userDAO")
 public class UserDAOImpl extends BaseDAOImpl implements UserDAO {
     @Override
     public List<User> selectAll(int page,int pageSize) {
